@@ -1,5 +1,4 @@
 import AppBar from "../components/AppBar";
-
 const Home = () => {
 	return (
 		<>
