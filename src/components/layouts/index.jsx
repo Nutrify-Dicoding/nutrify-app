@@ -1,5 +1,5 @@
-import AppbarAfterLogin from '../appbar/AppBarAfterLogin';
-import AppbarBeforeLogin from '../appbar/AppBarBeforeLogin';
+import AppbarAfterLogin from '../appbar/AppbarAfterLogin';
+import AppbarBeforeLogin from '../appbar/AppbarBeforeLogin';
 
 // eslint-disable-next-line react/prop-types
 const Layout = ({ children }) => {
