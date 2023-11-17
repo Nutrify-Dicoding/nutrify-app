@@ -2,6 +2,13 @@
 export default {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
+		screens: {
+			xl: { max: "1281px" },
+			lg: { max: "1025px" },
+			tab: { max: "841px" },
+			md: { max: "769px" },
+			sm: { max: "641px" },
+		},
 		extend: {
 			fontSize: {
 				sm: "0.875rem",
