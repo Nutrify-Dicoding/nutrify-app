@@ -4,8 +4,8 @@ import ButtonSignup from "./buttons/ButtonSignup";
 const AppBar = () => {
 	return (
 		<>
-			<nav className="bg-white border-b-[1px] border-white-400-100/80 ">
-				<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+			<nav className="w-full bg-white border-b-[1px] border-white-400-100/80 fixed z-10">
+				<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-[6.25%]">
 					<a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
 						<img src="/icons/nutrify-logo.svg" alt="" width={168} height={49} />
 					</a>
