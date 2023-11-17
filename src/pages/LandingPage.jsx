@@ -1,10 +1,8 @@
 import Button from "../components/buttons/Button";
-import AppBar from "../components/AppBar";
 const LandingPage = () => {
 	return (
 		<>
-			<AppBar />
-			<section className="px-[6.25%] w-screen h-screen">
+			<section className="px-[6.25%] w-full h-screen">
 				<div className="flex h-full flex-row justify-between items-center pt-[4rem]">
 					<div className="w-[42%]">
 						<h1 className=" text-5xl text-navy font-bold">
