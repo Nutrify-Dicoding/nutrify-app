@@ -5,7 +5,7 @@ const LandingPage = () => {
 			<section className="px-[6.25%] w-full h-screen tab:h-full tab:pt-[4rem]">
 				<div className="flex h-full flex-row justify-between items-center pt-[4rem]">
 					<div className="w-[42%] tab:w-[50%] md:w-full md:flex md:flex-col md:items-center">
-						<h1 className=" text-5xl text-navy font-bold lg:text-4xl tab:text-3xl tab:text-mobile-5xl">
+						<h1 className=" text-5xl text-navy font-bold lg:text-4xl tab:text-3xl md:text-mobile-5xl">
 							Gizi yang Tepat, Hidup yang <span className="text-orange">Lebih Baik!</span>{" "}
 						</h1>
 						<div className="hidden relative md:block md:w-[300px] md:h-[300px] md:mt-6">
