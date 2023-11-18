@@ -1,18 +1,20 @@
 import Banner from '../components/Banner';
+import TrackingContainer from '../components/TrackingContainer';
 
 const Home = () => {
   return (
     <>
-      <section className="px-[3.25%] w-full h-screen tab:h-full tab:pt-[4rem] mt-14 ">
+      <section className="px-[12.25%] w-full h-screen tab:h-full tab:pt-[4rem] mt-14 ">
         <Banner />
-        <div className="w-full  mt-14 flex flex-row justify-between px-36">
-          <p className="text-xl font-semibold text-black">
+        <div className="w-full  mt-14 flex flex-row justify-between ">
+          <p className="text-l font-semibold text-black">
             Capaian Harianmu
           </p>
-          <p className="text-xl font-semibold text-orange">
+          <p className="text-l font-semibold text-orange">
             Lihat semua
           </p>
         </div>
+        <TrackingContainer />
       </section>
     </>
   );
