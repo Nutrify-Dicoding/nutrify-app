@@ -4,7 +4,7 @@ import ButtonSignup from '../buttons/ButtonSignup';
 const AppbarBeforeLogin = () => {
   return (
     <>
-      <nav className="bg-white border-gray-200 border-b-[1px] w-full px-[6.25%] sticky m-0">
+      <nav className="bg-white border-gray-200 border-b-[1px] w-full px-[6.25%] fixed m-0">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
           <a
             href="https://flowbite.com/"

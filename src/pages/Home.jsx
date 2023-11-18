@@ -1,5 +1,7 @@
 import Banner from '../components/Banner';
-import TrackingContainer from '../components/TrackingContainer';
+import FilterContainer from '../components/containers/FilterContainer';
+import ListFoodContainer from '../components/containers/ListFoodContainer';
+import TrackingContainer from '../components/containers/TrackingContainer';
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
           </p>
         </div>
         <TrackingContainer />
+        <FilterContainer />
+        <ListFoodContainer />
       </section>
     </>
   );

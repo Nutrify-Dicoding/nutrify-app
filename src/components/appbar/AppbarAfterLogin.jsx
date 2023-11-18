@@ -1,7 +1,7 @@
 const AppbarAfterLogin = () => {
   return (
     <>
-      <nav className="bg-white border-gray-200 border-b-[1px] w-full px-[6.25%] sticky top-0 z-10">
+      <nav className="bg-white border-gray-200 border-b-[1px] w-full px-[6.25%] fixed top-0 z-10">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
           <a
             href="https://flowbite.com/"
