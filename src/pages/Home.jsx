@@ -1,7 +1,12 @@
+import Banner from '../components/Banner';
+
 const Home = () => {
   return (
     <>
-      <p className="text-5xl font-bold underline">Hello world!</p>
+      <section className="px-[3.25%] w-full h-screen tab:h-full tab:pt-[4rem] mt-14 ">
+        <Banner />
+        <div className="w-full border border-black mt-14"></div>
+      </section>
     </>
   );
 };
