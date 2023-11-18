@@ -1,7 +1,25 @@
+import Banner from '../components/Banner';
+import FilterContainer from '../components/containers/FilterContainer';
+import ListFoodContainer from '../components/containers/ListFoodContainer';
+import TrackingContainer from '../components/containers/TrackingContainer';
+
 const Home = () => {
   return (
     <>
-      <p className="text-5xl font-bold underline">Hello world!</p>
+      <section className="px-[12.25%] w-full h-screen tab:h-full tab:pt-[4rem] mt-14 ">
+        <Banner />
+        <div className="w-full  mt-14 flex flex-row justify-between ">
+          <p className="text-l font-semibold text-black">
+            Capaian Harianmu
+          </p>
+          <p className="text-l font-semibold text-orange">
+            Lihat semua
+          </p>
+        </div>
+        <TrackingContainer />
+        <FilterContainer />
+        <ListFoodContainer />
+      </section>
     </>
   );
 };
