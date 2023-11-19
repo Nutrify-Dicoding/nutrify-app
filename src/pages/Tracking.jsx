@@ -7,7 +7,7 @@ const Tracking = () => {
   return (
     <section className="px-[12.25%] w-full tab:h-full tab:pt-[4rem] mt-36 ">
       <p
-        className="font-bold text-2xl
+        className="text-xl font-bold
         ">
         Pilih Makanan
       </p>
@@ -47,7 +47,7 @@ const Tracking = () => {
         />
       </div>
       <p
-        className="font-bold mt-20 text-2xl
+        className="font-bold mt-20 text-xl 
         ">
         Makanan dipilih hari ini
       </p>

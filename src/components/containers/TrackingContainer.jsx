@@ -2,7 +2,7 @@ import CardTrackStats from '../cards/CardTrackStats';
 
 const TrackingContainer = () => {
   return (
-    <div className="mt-14  flex flex-row flex-wrap justify-center align-middle gap-10">
+    <div className="mt-14   flex flex-row flex-wrap justify-center align-middle gap-10">
       <CardTrackStats
         color={'text-yellow'}
         icon={'lemak-icon.svg'}

@@ -11,7 +11,7 @@ const FilterContainer = () => {
     'Soup',
   ];
   return (
-    <div className="flex flex-row overflow-hidden justify-between mt-10">
+    <div className="flex w-full lg:hidden flex-row overflow-hidden  gap-6 mt-10">
       {categories.map((category, i) => {
         return <ItemFilter key={i} category={category} />;
       })}

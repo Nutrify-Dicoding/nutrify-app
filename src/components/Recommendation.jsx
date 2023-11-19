@@ -5,7 +5,7 @@ const Recommendation = () => {
   return (
     <div>
       <p
-        className="font-bold mt-20 text-2xl
+        className="font-bold mt-20 text-xl 
         ">
         Makanan Terpopuler
       </p>
