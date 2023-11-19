@@ -1,4 +1,5 @@
 import CardFoodChosen from '../components/cards/CardFoodChosen';
+import CardFoodHistory from '../components/cards/CardFoodHistory';
 import CardNutritionTrack from '../components/cards/CardNutritionTrack';
 
 const Tracking = () => {
@@ -50,9 +51,9 @@ const Tracking = () => {
         Makanan dipilih hari ini
       </p>
       <div>
-        <CardFoodChosen />
-        <CardFoodChosen />
-        <CardFoodChosen />
+        <CardFoodHistory />
+        <CardFoodHistory />
+        <CardFoodHistory />
       </div>
     </section>
   );
