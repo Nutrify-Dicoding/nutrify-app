@@ -1,3 +1,4 @@
+import Recommendation from '../components/Recommendation';
 import CardFoodChosen from '../components/cards/CardFoodChosen';
 import CardFoodHistory from '../components/cards/CardFoodHistory';
 import CardNutritionTrack from '../components/cards/CardNutritionTrack';
@@ -55,6 +56,8 @@ const Tracking = () => {
         <CardFoodHistory />
         <CardFoodHistory />
       </div>
+
+      <Recommendation />
     </section>
   );
 };
