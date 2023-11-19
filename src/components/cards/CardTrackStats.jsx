@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const CardTrack = ({
+const CardTrackStats = ({
   name,
   icon,
   percentase,
@@ -28,4 +28,4 @@ const CardTrack = ({
   );
 };
 
-export default CardTrack;
+export default CardTrackStats;
