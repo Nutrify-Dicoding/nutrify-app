@@ -1,9 +1,9 @@
-import CardTrack from '../cards/CardTrack';
+import CardTrackStats from '../cards/CardTrackStats';
 
 const TrackingContainer = () => {
   return (
     <div className="mt-14  flex flex-row flex-wrap justify-center align-middle gap-10">
-      <CardTrack
+      <CardTrackStats
         color={'text-yellow'}
         icon={'lemak-icon.svg'}
         percentase={'10%'}
@@ -11,7 +11,7 @@ const TrackingContainer = () => {
         value={100}
         name={'Lemak'}
       />
-      <CardTrack
+      <CardTrackStats
         color={'text-rose-400'}
         icon={'kalori-icon.svg'}
         percentase={'10%'}
@@ -19,7 +19,7 @@ const TrackingContainer = () => {
         value={100}
         name={'Kalori'}
       />
-      <CardTrack
+      <CardTrackStats
         color={'text-cyan-900'}
         icon={'protein-icon.svg'}
         percentase={'10%'}
@@ -27,7 +27,7 @@ const TrackingContainer = () => {
         value={100}
         name={'Protein'}
       />
-      <CardTrack
+      <CardTrackStats
         color={'text-orange'}
         icon={'carbo-icon.svg'}
         percentase={'10%'}
