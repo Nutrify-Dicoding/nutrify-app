@@ -135,6 +135,15 @@ const LandingPage = () => {
 					</div>
 				</div>
 			</section>
+			<section className="px-[6.25%] py-[5rem]">
+				<div className="h-[380px] flex flex-col justify-center items-center bg-[url('images/landing-page/banner-promo.png')] bg-no-repeat bg-center bg-cover text-center text-white rounded-[1.25rem] tab:h-[280px] sm:h-[300px] sm:bg-right">
+					<div className="w-[58%] mb-7 tab:w-[90%]">
+						<h2 className="text-4xl font-semibold mb-2 sm:text-mobile-4xl">Ayo Daftar Sekarang Juga!</h2>
+						<p className="text-md sm:text-base">Jangan Lewatkan Kesempatan Untuk Meningkatkan Kesehatan dan Gaya Hidup Anda.</p>
+					</div>
+					<Button buttonText={'Daftar Sekarang'}></Button>
+				</div>
+			</section>
 		</>
 	);
 };
