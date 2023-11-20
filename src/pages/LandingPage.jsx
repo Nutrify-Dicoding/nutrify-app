@@ -103,6 +103,38 @@ const LandingPage = () => {
 					</div>
 				</div>
 			</section>
+			<section className="px-[6.25%]">
+				<div className="p-12 shadow-[0px_0px_56px_-7px_rgba(119,119,119,0.12)] lg:px-8 sm:px-4">
+					<div className="text-navy mb-12 sm:mb-8 text-center">
+						<h2 className="text-4xl font-bold sm:text-mobile-4xl">
+							Pencapaian <span className="text-orange">Nutrisi Seimbang</span>
+						</h2>
+						<p className="opacity-90 sm:leading-7">Temukan keberagaman nutrisi yang akan kami kalkulasi untuk Anda</p>
+					</div>
+					<div className="grid grid-cols-4 gap-5 tab:grid-cols-2">
+						<div className="flex flex-col items-center text-navy px-6 py-5 text-center">
+							<img className="h-20 mb-1" src="/images/landing-page/kalori.svg" alt="Icon Kalori" />
+							<h3 className="text-xl font-extrabold mt-3">Kalori</h3>
+							<p>Energi Hidup Vital</p>
+						</div>
+						<div className="flex flex-col items-center text-navy px-6 py-5 text-center">
+							<img className="h-20 mb-1" src="/images/landing-page/lemak.svg" alt="Icon Lemak" />
+							<h3 className="text-xl font-extrabold mt-3">Lemak</h3>
+							<p>Energi Bagi Tubuh</p>
+						</div>
+						<div className="flex flex-col items-center text-navy px-6 py-5 text-center">
+							<img className="h-20 mb-1" src="/images/landing-page/karbohidrat.svg" alt="Icon Karbohidrat" />
+							<h3 className="text-xl font-extrabold mt-3">Karbohidrat</h3>
+							<p>Sumber Tenaga Alami</p>
+						</div>
+						<div className="flex flex-col items-center text-navy px-6 py-5 text-center">
+							<img className="h-20 mb-1" src="/images/landing-page/protein.svg" alt="Icon Protein" />
+							<h3 className="text-xl font-extrabold mt-3">Protein</h3>
+							<p>Bangun Kekuatan Tubuh</p>
+						</div>
+					</div>
+				</div>
+			</section>
 		</>
 	);
 };
