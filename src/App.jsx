@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage';
 import Layout from './components/layouts';
 import FoodDetail from './pages/FoodDetail';
 import Tracking from './pages/Tracking';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/landing-page" element={<LandingPage />} />
             <Route path="/food-detail" element={<FoodDetail />} />
             <Route path="track" element={<Tracking />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </Layout>
       </BrowserRouter>
