@@ -6,6 +6,7 @@ import FoodDetail from './pages/FoodDetail';
 import Tracking from './pages/Tracking';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="track" element={<Tracking />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/edit-profile" element={<EditProfile />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </Layout>
       </BrowserRouter>
