@@ -1,6 +1,6 @@
 const Profile = () => {
     return (
-        <main className="pt-24 px-[6.25%] text-navy transition-all">
+        <section className="pt-24 px-[6.25%] text-navy transition-all">
             <div className="border p-4 rounded-lg mt-2 flex items-center md:items-start">
                 <div>
                     <img className="rounded-full me-4" src="https://picsum.photos/70/70" alt="" />
@@ -57,7 +57,7 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
-        </main>
+        </section>
     )
 }
 export default Profile;
