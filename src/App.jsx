@@ -5,6 +5,7 @@ import Layout from './components/layouts';
 import FoodDetail from './pages/FoodDetail';
 import Tracking from './pages/Tracking';
 import Profile from './pages/Profile';
+import EditProfile from './pages/EditProfile';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/food-detail" element={<FoodDetail />} />
             <Route path="track" element={<Tracking />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/edit-profile" element={<EditProfile />} />
           </Routes>
         </Layout>
       </BrowserRouter>

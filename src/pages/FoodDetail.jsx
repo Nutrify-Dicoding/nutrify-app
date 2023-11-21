@@ -10,7 +10,7 @@ const FoodDetail = () => {
   ];
   return (
     <>
-      <main className="pt-20">
+      <section className="pt-20">
         <div className="container 2xl:mx-auto">
           <div className="grid grid-cols-2 sm:grid-cols-1">
             <div>
@@ -166,7 +166,7 @@ const FoodDetail = () => {
         <div className="container px-[6.25%] mx-auto mt-16">
           <Recommendation />
         </div>
-      </main>
+      </section>
     </>
   );
 };
