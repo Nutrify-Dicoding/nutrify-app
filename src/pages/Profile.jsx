@@ -1,30 +1,32 @@
+import { Link } from "react-router-dom";
+
 const Profile = () => {
     return (
         <section className="pt-24 px-[6.25%] text-navy transition-all">
             <div className="border p-4 rounded-lg mt-2 flex items-center md:items-start">
                 <div>
-                    <img className="rounded-full me-4" src="https://picsum.photos/70/70" alt="" />
+                    <img className="rounded-full me-4 w-[70px] h-[70px]" src="https://picsum.photos/70/70" alt="User Profile" />
                 </div>
                 <div className="flex md:block justify-between w-full">
                     <div className="ms-3">
                         <div className="font-semibold text-lg">Nama User</div>
                         <div className="text-sm">contact@gmail.com</div>
                     </div>
-                    <div className="sm:pt-4">
-                        <button className="p-3 sm:p-2 bg-white-100 hover:bg-white-300 rounded-lg me-3 text-sm">
+                    <div className="sm:pt-4 items-center flex">
+                        <Link to={"/track"} className="p-3 sm:p-2 bg-white-100 hover:bg-white-300 rounded-lg me-3 text-sm">
                             <img
                                 src="/icons/vector.svg"
                                 className="inline me-2"
                             />
                             Tracking
-                        </button>
-                        <button className="p-3 sm:p-2 bg-white-100 hover:bg-white-300 rounded-lg text-sm">
+                        </Link>
+                        <Link to={"/edit-profile"} className="p-3 sm:p-2 bg-white-100 hover:bg-white-300 rounded-lg text-sm">
                             <img
                                 src="/icons/mode_edit_24px.svg"
                                 className="inline me-2"
                             />
                             Edit Profile
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
