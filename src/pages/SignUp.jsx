@@ -18,39 +18,39 @@ const SignUp = () => {
                 <input type="text" className="block w-[15rem] rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2" placeholder="Nama Panjang" />
                 </div>
                 <div>
-                <label htmlFor="nama" className="text-white text-xs">Email</label>
+                <label htmlFor="email" className="text-white text-xs">Email</label>
                 <input type="text" className="block w-[15rem] rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2" placeholder="Email" />
                 </div>
               </div>
               <div className="flex items-center gap-[10px] mt-3">
               <div>
-                <label htmlFor="nama" className="text-white text-xs">Password</label>
+                <label htmlFor="password" className="text-white text-xs">Password</label>
                 <input type="password" className="block w-[15rem] rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2" placeholder="Password" />
                 </div>
                 <div>
-                <label htmlFor="nama" className="text-white text-xs">Konfirmasi Password</label>
+                <label htmlFor="password" className="text-white text-xs">Konfirmasi Password</label>
                 <input type="password" className="block w-[15rem] rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2" placeholder="Konfirmasi Password" />
                 </div>
               </div>
               <div className="flex items-center gap-[10px] mt-3">
               <div>
-                <label htmlFor="nama" className="text-white text-xs">Jenis Kelamin</label>
+                <label htmlFor="gender" className="text-white text-xs">Jenis Kelamin</label>
                 <input type="text" className="block w-[15rem] rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2" placeholder="Jenis Kelamin" />
                 </div>
                 <div>
-                <label htmlFor="nama" className="text-white text-xs">Umur</label>
-                <input type="text" className="block w-[15rem] rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2" placeholder="Umur" />
+                <label htmlFor="umur" className="text-white text-xs">Umur</label>
+                <input type="number" className="block w-[15rem] rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2" placeholder="Umur" />
                 </div>
               </div>
               <div className="flex gap-[10px] mt-3">
               <div>
-                <label htmlFor="nama" className="text-white text-xs">Masukan Berat Badan</label>
-              <input type="text" className="block rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2 w-[9.6rem]" placeholder="Berat Badan" /> </div>
+                <label htmlFor="bb" className="text-white text-xs">Masukan Berat Badan</label>
+              <input type="number" className="block rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2 w-[9.6rem]" placeholder="Berat Badan" /> </div>
               <div>
-                <label htmlFor="nama" className="text-white text-xs">Masukan Tinggi Badan</label>
-              <input type="text" className="block rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2 w-[9.5rem]" placeholder="Tinggi Badan" /></div>
+                <label htmlFor="tb" className="text-white text-xs">Masukan Tinggi Badan</label>
+              <input type="number" className="block rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2 w-[9.5rem]" placeholder="Tinggi Badan" /></div>
               <div>
-                <label htmlFor="nama" className="text-white text-xs">Masukan Kegiatan</label>
+                <label htmlFor="kegiatan" className="text-white text-xs">Masukan Kegiatan</label>
               <input type="text" className="block rounded-md h-9 p-3 placeholder-[#002140] text-xs mr-2 w-[9.6rem]" placeholder="Jenis Kegiatan" /></div>
               </div>
               <button className="mt-5 ml-[7.6rem] text-[0.90rem] w-[16rem] bg-[#FB8500] px-2 py-1 h-8 rounded-md text-white">
