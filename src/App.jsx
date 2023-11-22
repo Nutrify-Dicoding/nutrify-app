@@ -7,6 +7,7 @@ import Tracking from './pages/Tracking';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/edit-profile" element={<EditProfile />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </Layout>
       </BrowserRouter>
