@@ -1,4 +1,5 @@
 import Button from '../components/buttons/Button';
+import CardFood from '../components/cards/CardFood';
 const LandingPage = () => {
 	return (
 		<>
@@ -69,7 +70,7 @@ const LandingPage = () => {
 					<p className="opacity-90 sm:leading-7">Temukan keunggulan kami dalam memfasilitasi perjalanan kesehatan Anda</p>
 				</div>
 				<div className="grid grid-cols-4 gap-5 lg:grid-cols-3 tab:grid-cols-2 sm:grid-cols-1">
-					<div className="border-[1.5px] border-navy/80 rounded-[10px] text-navy overflow-hidden">
+					<div className="flex flex-col justify-between border-[1.5px] border-navy/80 rounded-[10px] text-navy overflow-hidden">
 						<div className="p-7">
 							<img src="/images/landing-page/nutrisi.svg" alt="Icon Nutrisi" />
 							<h3 className="text-xl mt-4 mb-3 font-semibold">Nutrisi Optimal </h3>
@@ -77,7 +78,7 @@ const LandingPage = () => {
 						</div>
 						<div className="w-full h-[112px] bg-no-repeat bg-center bg-cover bg-[url('images/landing-page/ilustrasi-nutrisi.svg')] border-t-[1.5px] border-navy/80"></div>
 					</div>
-					<div className="border-[1.5px] border-navy/80 rounded-[10px] text-navy overflow-hidden">
+					<div className="flex flex-col justify-between border-[1.5px] border-navy/80 rounded-[10px] text-navy overflow-hidden">
 						<div className="p-7">
 							<img src="/images/landing-page/peta-nutrisi.svg" alt="Icon Nutrisi" />
 							<h3 className="text-xl mt-4 mb-3 font-semibold">Peta Nutrisi</h3>
@@ -85,7 +86,7 @@ const LandingPage = () => {
 						</div>
 						<div className="w-full h-[112px] bg-no-repeat bg-center bg-cover bg-[url('images/landing-page/ilustrasi-peta-nutrisi.svg')] border-t-[1.5px] border-navy/80"></div>
 					</div>
-					<div className="border-[1.5px] border-navy/80 rounded-[10px] text-navy overflow-hidden">
+					<div className="flex flex-col justify-between border-[1.5px] border-navy/80 rounded-[10px] text-navy overflow-hidden">
 						<div className="p-7">
 							<img src="/images/landing-page/hitung-sehat.svg" alt="Icon Nutrisi" />
 							<h3 className="text-xl mt-4 mb-3 font-semibold">Hitung Sehat</h3>
@@ -93,7 +94,7 @@ const LandingPage = () => {
 						</div>
 						<div className="w-full h-[112px] bg-no-repeat bg-center bg-cover bg-[url('images/landing-page/ilustrasi-hitung-sehat.svg')] border-t-[1.5px] border-navy/80"></div>
 					</div>
-					<div className="border-[1.5px] border-navy/80 rounded-[10px] text-navy overflow-hidden">
+					<div className="flex flex-col justify-between border-[1.5px] border-navy/80 rounded-[10px] text-navy overflow-hidden">
 						<div className="p-7">
 							<img src="/images/landing-page/berat-seimbang.svg" alt="Icon Nutrisi" />
 							<h3 className="text-xl mt-4 mb-3 font-semibold">Berat Ideal</h3>
@@ -135,7 +136,31 @@ const LandingPage = () => {
 					</div>
 				</div>
 			</section>
-			<section className="px-[6.25%] py-[5rem]">
+			<section className="px-[6.25%] py-[5rem] sm:py-12">
+				<div className="text-navy mb-12 sm:mb-8">
+					<h2 className="text-4xl font-bold sm:text-mobile-4xl">
+						Eksplorasi <span className="text-orange">Ragam Makanan</span> Sehat
+					</h2>
+					<p className="opacity-90 sm:leading-7">Temukan kelezatan nutrisi dalam setiap hidangan kami.</p>
+				</div>
+				<div className="grid my-10 sm:grid-cols-1 tab:grid-cols-3 md:grid-cols-2 grid-cols-4 gap-5">
+					{Array.from({ length: 4 }, (_, index) => (
+						<CardFood
+							key={index}
+							name="Nama Makanan"
+							description="Description..."
+							fat="93"
+							calorie="100"
+							protein="80"
+							carbohydrate="100"
+						/>
+					))}
+				</div>
+				<div className="w-full flex justify-center">
+					<Button buttonText={'Selengkapnya'} />
+				</div>
+			</section>
+			<section className="px-[6.25%] pb-[5rem]">
 				<div className="h-[380px] flex flex-col justify-center items-center bg-[url('images/landing-page/banner-promo.png')] bg-no-repeat bg-center bg-cover text-center text-white rounded-[1.25rem] tab:h-[280px] sm:h-[300px] sm:bg-right">
 					<div className="w-[58%] mb-7 tab:w-[90%]">
 						<h2 className="text-4xl font-semibold mb-2 sm:text-mobile-4xl">Ayo Daftar Sekarang Juga!</h2>
