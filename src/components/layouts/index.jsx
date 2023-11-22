@@ -4,14 +4,14 @@ import Footer from './Footer';
 
 // eslint-disable-next-line react/prop-types
 const Layout = ({ children }) => {
-  const isLogin = true;
-  return (
-    <>
-      {isLogin ? <AppbarAfterLogin /> : <AppbarBeforeLogin />}
-      {children}
-      <Footer />
-    </>
-  );
+	const isLogin = true;
+	return (
+		<>
+			{isLogin ? <AppbarAfterLogin /> : <AppbarBeforeLogin />}
+			{children}
+			<Footer />
+		</>
+	);
 };
 
 export default Layout;
