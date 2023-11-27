@@ -6,7 +6,8 @@ const generateFoodData = (numItems, listCategories) => {
         const foodItem = {
             "_id": `x${i}`,
             "name": `Nama Makanan ${i}`,
-            "image": "https://i.ibb.co/YbZR8mc/Group-40.png",
+            // "image": "https://i.ibb.co/YbZR8mc/Group-40.png",
+            "image": "https://i.ibb.co/8s9c629/Foto-Makanan.png",
             category,
             "cal": Math.floor(Math.random() * 100) + 50,
             "protein": Math.floor(Math.random() * 50) + 50,

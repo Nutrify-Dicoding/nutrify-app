@@ -392,6 +392,7 @@ BASE URL :
 - Header :
    - Content-Type : application/json
    - Accept : application/json
+   - Authorization : Bearer TOKEN
 
 - Body :
    `json
@@ -578,7 +579,7 @@ BASE URL :
 - Endpoint : `(base-url)/tracking/today`
 - Header : 
   - Accept : application/json
-  - Authorization : Bearer JWT_TOKEN
+  - Authorization : Bearer TOKEN
 
 **Response** :
 
@@ -636,7 +637,7 @@ BASE URL :
 - Endpoint : `(base-url)/tracking/{:date}`
 - Header : 
   - Accept : application/json
-  - Authorization : Bearer JWT_TOKEN
+  - Authorization : Bearer TOKEN
 
 **Response** :
 
@@ -696,7 +697,7 @@ BASE URL :
 - Endpoint : `(base-url)/profile`
 - Header : 
   - Accept : application/json
-  - Authorization : Bearer JWT_TOKEN
+  - Authorization : Bearer TOKEN
 
 **Response** :
 
@@ -733,7 +734,7 @@ BASE URL :
 - Header :
    - Content-Type : application/json
    - Accept : application/json
-   - Authorization : Bearer JWT_TOKEN
+   - Authorization : Bearer TOKEN
 
 - Body : (example)
    `json
@@ -775,7 +776,7 @@ BASE URL :
 - Header :
    - Content-Type : application/json
    - Accept : application/json
-   - Authorization : Bearer JWT_TOKEN
+   - Authorization : Bearer TOKEN
 
 - Body :
    `json
@@ -807,7 +808,7 @@ BASE URL :
 - Header :
    - Content-Type : application/json
    - Accept : application/json
-   - Authorization : Bearer JWT_TOKEN
+   - Authorization : Bearer TOKEN
 
 - Body : (example)
    `json

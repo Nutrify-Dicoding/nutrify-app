@@ -1,6 +1,6 @@
 const { signin, signup } = require("./handlers/auth");
 const { getAllCategories } = require("./handlers/categorie");
-const { putFoodFavorites, getFoodFavorites, deleteFoodFavorites } = require("./handlers/favorite");
+const { postFoodFavorites, getFoodFavorites, deleteFoodFavorites } = require("./handlers/favorite");
 const { getAllFoods, getFoodById, getFoodByCategory, searchFoodByName } = require("./handlers/foods");
 const { getProfile, editProfile, editAccount, changePassword } = require("./handlers/profile");
 const { addTracking, getAllTracking, getTrackingToday, getTrackingPerDate } = require("./handlers/tracking");
@@ -49,9 +49,12 @@ const routes = [
         handler: getAllCategories
     },
     {
-        method: 'PUT',
+        method: 'POST',
         path: '/favorites',
-        handler: putFoodFavorites
+        handler: postFoodFavorites,
+        options: {
+            auth: 'jwt',
+        },
     },
     {
         method: 'DELETE',

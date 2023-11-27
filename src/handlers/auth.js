@@ -6,6 +6,14 @@ const signin = (request, h) => {
         role: 'user'
     }, request.server.app.JWT_PRIVATE_KEY);
 
+    const {email, password} = request.payload;
+    if (email !== 'user@test.com' || password !== '123') {
+        return h.response({
+            "error": "Unauthorized",
+            "message": "Email atau password salah"
+        }).code(401);
+    }
+
     return {
         "message": "Login success, welcome!",
         "token": token,

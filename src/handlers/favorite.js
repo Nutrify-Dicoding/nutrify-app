@@ -1,4 +1,4 @@
-const putFoodFavorites = (req, res) => {
+const postFoodFavorites = (req, res) => {
     return {
         "message": "favorite food data added successfully",
         "favorite": "string unique",
@@ -21,7 +21,7 @@ const deleteFoodFavorites = (req, res) => {
 }
 
 module.exports = {
-    putFoodFavorites,
+    postFoodFavorites,
     getFoodFavorites,
     deleteFoodFavorites
 }
