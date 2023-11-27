@@ -32,7 +32,7 @@ const CardInfoBody = ({ icon, title, bodyText, bodyValue, advice }) => {
 							Berat badan <span className={`${colourValue(title, bodyValue)} font-semibold`}>{bodyText}</span>, {advice}. Kunjungi
 							halaman
 							<span className="text-navy font-semibold">
-								<Link to={'/badan-ideal'}> berikut</Link>
+								<Link to={'/advice'}> berikut</Link>
 							</span>
 						</p>
 					</div>

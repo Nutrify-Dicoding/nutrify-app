@@ -7,6 +7,7 @@ import Tracking from './pages/Tracking';
 import AllTrack from './pages/AllTrack';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
+import Advice from './pages/Advice';
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 					<Route path="alltrack" element={<AllTrack />} />
 					<Route path="/profile" element={<Profile />} />
 					<Route path="/edit-profile" element={<EditProfile />} />
+					<Route path="/advice" element={<Advice />} />
 				</Routes>
 			</Layout>
 		</BrowserRouter>
