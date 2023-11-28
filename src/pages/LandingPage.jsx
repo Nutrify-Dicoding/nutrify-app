@@ -1,5 +1,7 @@
 import Button from '../components/buttons/Button';
 import CardFood from '../components/cards/CardFood';
+import { Link } from 'react-router-dom';
+
 const LandingPage = () => {
 	return (
 		<>
@@ -35,7 +37,9 @@ const LandingPage = () => {
 						<p className="text-navy leading-8 mt-8 mb-8 lg:leading-7">
 							Temukan rahasia kesehatan melalui informasi gizi akurat dan inspirasi untuk perubahan positif dalam hidup Anda.
 						</p>
-						<Button buttonText={'Mulai Sekarang'} />
+						<Link to="/auth/signin">
+							<Button buttonText={'Mulai Sekarang'} />
+						</Link>
 					</div>
 					<div className="pt-5 relative md:hidden">
 						<div className="w-[420px] h-[420px] aspect-square relative z-[5] lg:w-[336px] lg:h-[336px] tab:w-[275px] tab:h-[275px] ">

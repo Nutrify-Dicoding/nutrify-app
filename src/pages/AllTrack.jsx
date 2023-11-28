@@ -2,6 +2,9 @@ import Recommendation from '../components/Recommendation';
 import CardInfoBody from '../components/cards/CardInfoBody';
 import CardNutritionTrack from '../components/cards/CardNutritionTrack';
 import CardFoodHistory from '../components/cards/CardFoodHistory';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const dataBodyUser = [
 	{
@@ -21,6 +24,22 @@ const dataBodyUser = [
 ];
 
 const AllTrack = () => {
+	const [historyFoods, setHistoryFoods] = useState([]);
+	const token = useSelector((state) => state.auth.token)
+	useEffect(() => {
+		const config = {
+			headers: {
+				'Authorization': `Bearer ${token}`,
+			},
+		};
+		axios.get('/tracking', config)
+			.then((res) => {
+				if (res.status === 200 && res.data) {
+					setHistoryFoods(res.data.tracking.food);
+					// console.log(res.data.tracking.food)
+				}
+			})
+	}, [token]);
 	return (
 		<>
 			<section className="mt-32 px-[6.25%] grid grid-cols-2 gap-5 tab:grid-cols-1">
@@ -85,9 +104,14 @@ const AllTrack = () => {
 					<h2 className="text-2xl text-navy font-semibold">Riwayat Makanan</h2>
 				</div>
 				<div>
-					<CardFoodHistory />
-					<CardFoodHistory />
-					<CardFoodHistory />
+					{/* <CardFoodHistory /> */}
+					{historyFoods.map((x) => {
+						return <CardFoodHistory
+							key={x.foodId._id}
+							data={x.foodId}
+							portion={x.portion}
+						/>
+					})}
 				</div>
 			</section>
 			<section className="px-[6.25%]">

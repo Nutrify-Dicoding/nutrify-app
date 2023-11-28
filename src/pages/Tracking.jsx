@@ -1,9 +1,27 @@
+import { useSelector } from 'react-redux';
 import Recommendation from '../components/Recommendation';
 import CardFoodChosen from '../components/cards/CardFoodChosen';
 import CardFoodHistory from '../components/cards/CardFoodHistory';
 import CardNutritionTrack from '../components/cards/CardNutritionTrack';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Tracking = () => {
+	const [foodsSelectedToday, setFoodsSelectedToday] = useState([]);
+	const token = useSelector((state) => state.auth.token)
+	useEffect(() => {
+		const config = {
+			headers: {
+				'Authorization': `Bearer ${token}`,
+			}
+		};
+		axios.get('/tracking/today', config)
+			.then((res) => {
+				if (res.status === 200 && res.data) {
+					setFoodsSelectedToday(res.data.tracking.food);
+				}
+			})
+	}, [token]);
 	return (
 		<section className="px-[12.25%] w-full tab:h-full tab:pt-[4rem] mt-36 ">
 			<p
@@ -47,9 +65,14 @@ const Tracking = () => {
 				Makanan dipilih hari ini
 			</p>
 			<div>
-				<CardFoodHistory />
-				<CardFoodHistory />
-				<CardFoodHistory />
+				{/* <CardFoodHistory /> */}
+				{foodsSelectedToday.map((x) => {
+					return <CardFoodHistory
+						key={x.foodId._id}
+						data={x.foodId}
+						portion={x.portion}
+					/>
+				})}
 			</div>
 
 			<Recommendation />

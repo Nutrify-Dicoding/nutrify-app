@@ -1,6 +1,27 @@
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Profile = () => {
+	const token = useSelector((state) => state.auth.token)
+	const [user, setUser] = useState({});
+	const navigate = useNavigate();
+	useEffect(() => {
+		const config = {
+			headers: {
+				'Authorization': `Bearer ${token}`,
+			},
+		};
+		axios.get('/profile', config)
+			.then((res) => {
+				if (res.status === 200) setUser(res.data);
+			})
+			.catch((err) => {
+				if(err.response.status === 401) navigate('/auth/signin')
+				else console.log(err);
+			});
+	}, [token, navigate]);
 	return (
 		<section className="pt-24 px-[6.25%] text-navy transition-all mb-20 sm:mb-12">
 			<div className="border p-4 rounded-lg mt-2 flex items-center md:items-start">
@@ -9,15 +30,15 @@ const Profile = () => {
 				</div>
 				<div className="flex md:block justify-between w-full">
 					<div className="ms-3">
-						<div className="font-semibold text-lg">Nama User</div>
-						<div className="text-sm">contact@gmail.com</div>
+						<div className="font-semibold text-lg">{user.username}</div>
+						<div className="text-sm">{user.email}</div>
 					</div>
 					<div className="sm:pt-4 items-center flex">
-						<Link to={'/track'} className="p-3 sm:p-2 bg-white-100 hover:bg-white-300 rounded-lg me-3 text-sm">
+						<Link to={'/alltrack'} className="p-3 sm:p-2 bg-white-100 hover:bg-white-300 rounded-lg me-3 text-sm">
 							<img src="/icons/vector.svg" className="inline me-2" />
 							Tracking
 						</Link>
-						<Link to={'/edit-profile'} className="p-3 sm:p-2 bg-white-100 hover:bg-white-300 rounded-lg text-sm">
+						<Link to={'/profile/edit'} className="p-3 sm:p-2 bg-white-100 hover:bg-white-300 rounded-lg text-sm">
 							<img src="/icons/mode_edit_24px.svg" className="inline me-2" />
 							Edit Profile
 						</Link>
@@ -29,27 +50,27 @@ const Profile = () => {
 				<div className="grid grid-cols-3 sm:grid-cols-1">
 					<div>
 						<div className="font-medium mt-5">Email</div>
-						<div className="text-sm">contact@gmail.com</div>
+						<div className="text-sm">{user.email}</div>
 					</div>
 					<div>
 						<div className="font-medium mt-5">Jenis Kelamin</div>
-						<div className="text-sm">Perempuan</div>
+						<div className="text-sm">{user.gender}</div>
 					</div>
 					<div>
 						<div className="font-medium mt-5">Umur</div>
-						<div className="text-sm">16 Tahun</div>
+						<div className="text-sm">{user.umur} Tahun</div>
 					</div>
 					<div>
 						<div className="font-medium mt-5">Berat Badan</div>
-						<div className="text-sm">40 Kilogram</div>
+						<div className="text-sm">{user.berat} Kilogram</div>
 					</div>
 					<div>
 						<div className="font-medium mt-5">Tinggi Badan</div>
-						<div className="text-sm">165 Centimeter</div>
+						<div className="text-sm">{user.tinggi} Centimeter</div>
 					</div>
 					<div>
 						<div className="font-medium mt-5">Tingkat Kegiatan</div>
-						<div className="text-sm">Rendah</div>
+						<div className="text-sm">{user.levelAktivitas ? user.levelAktivitas.ket : ''}</div>
 					</div>
 				</div>
 			</div>

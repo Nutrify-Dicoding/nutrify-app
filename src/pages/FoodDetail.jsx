@@ -1,14 +1,57 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import Recommendation from '../components/Recommendation';
 import Button from '../components/buttons/Button';
-
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 const FoodDetail = () => {
+	const { food_id } = useParams();
 	const [showDescription, setshowDescription] = useState(true);
-	const breadcrumbItems = [
-		{ label: 'Home', url: '/' },
-		{ label: 'Nama Makanan', url: '#' },
-	];
+	const [breadcrumbItems, setBreadcrumbItems] = useState([]);
+	const [foodDetail, setFoodDetail] = useState({})
+	const [favorited, setFavorited] = useState(false)
+	const token = useSelector((state) => state.auth.token)
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+		axios.get(`/foods/${food_id}`)
+			.then((res) => {
+				if (res.status === 200 && res.data) {
+					setFoodDetail(res.data)
+
+					setBreadcrumbItems([
+						{ label: 'Home', url: '/' },
+						{ label: res.data.name, url: '#' },
+					])
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			})
+	}, [food_id]);
+
+	const toogleFavorite = () => {
+		const formData = {
+			food: food_id
+		}
+		const config = {
+			headers: {
+				'Authorization': `Bearer ${token}`,
+			},
+		};
+		axios.post(`/favorites`, formData, config)
+			.then((res) => {
+				if (res.status === 200 && res.data) {
+					setFavorited(true)
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			})
+	}
 	return (
 		<>
 			<section className="pt-20">
@@ -20,7 +63,7 @@ const FoodDetail = () => {
 						<div className="w-[50%] lg:w-[55%] tab:w-full pr-[6.25%] tab:px-[6.25%] pl-16 sm:px-[6.25%] md:py-5">
 							<Breadcrumb items={breadcrumbItems} />
 
-							<h1 className="text-3xl font-semibold text-navy">ini Nama Makanan</h1>
+							<h1 className="text-3xl font-semibold text-navy">{foodDetail.name ?? ''}</h1>
 							<ul className="flex mb-5 pt-4 border-b-[1.5px] border-white-100">
 								<li className={`me-4 pb-3 cursor-pointer ${showDescription ? 'border-b-2 border-b-orange text-navy' : ''}`}>
 									<a onClick={() => setshowDescription(!showDescription)}>Description</a>
@@ -31,9 +74,7 @@ const FoodDetail = () => {
 							</ul>
 							<div className={`${!showDescription ? 'hidden' : ''}`}>
 								<p className="text-navy">
-									Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat alias atque at ea doloremque harum fugit?
-									Dolores, aut molestias? Molestias, non. Impedit necessitatibus sint odit illum dolor consectetur voluptate
-									excepturi.
+									{foodDetail.desc ?? ''}
 								</p>
 
 								<h2 className="text-xl mt-4 mb-2 text-navy font-semibold">Bahan-bahan</h2>
@@ -48,7 +89,7 @@ const FoodDetail = () => {
 											<img src="/icons/cloud-meatball-solid.svg" className="inline me-2" />
 											Lemak
 										</div>
-										<div className="font-semibold text-navy">1000 g</div>
+										<div className="font-semibold text-navy">{foodDetail.fat ?? 0} g</div>
 										<div className="text-xs text-white-500">n% Harian</div>
 									</div>
 									<div>
@@ -56,7 +97,7 @@ const FoodDetail = () => {
 											<img src="/icons/fire-solid.svg" className="inline me-2" />
 											Kalori
 										</div>
-										<div className="font-semibold text-navy">1000 kkal</div>
+										<div className="font-semibold text-navy">{foodDetail.cal ?? 0} kkal</div>
 										<div className="text-xs text-white-500">n% Harian</div>
 									</div>
 									<div>
@@ -64,7 +105,7 @@ const FoodDetail = () => {
 											<img src="/icons/dna-solid.svg" className="inline me-2" />
 											Protein
 										</div>
-										<div className="font-semibold text-navy">1000 g</div>
+										<div className="font-semibold text-navy">{foodDetail.protein ?? 0} g</div>
 										<div className="text-xs text-white-500">n% Harian</div>
 									</div>
 									<div>
@@ -72,15 +113,15 @@ const FoodDetail = () => {
 											<img src="/icons/wheat-awn-solid.svg" className="inline me-2" />
 											Karbo
 										</div>
-										<div className="font-semibold text-navy">1000 g</div>
+										<div className="font-semibold text-navy">{foodDetail.carb ?? 0} g</div>
 										<div className="text-xs text-white-500">n% Harian</div>
 									</div>
 								</div>
 
 								<div className="pt-11 flex items-center tab:justify-end">
 									<Button buttonText={'Pilih Makanan'} />
-									<button className="me-2 ml-4 py-2 px-3 border-orange border-2 rounded-lg">
-										<img src="/icons/love.svg" alt="Love Icon" className="inline" />
+									<button className="me-2 ml-4 py-2 px-3 border-orange border-2 rounded-lg" onClick={() => toogleFavorite()}>
+										<img src={favorited ? '/icons/love-full.svg':'/icons/love.svg'} alt="Love Icon" className="inline" />
 									</button>
 								</div>
 							</div>

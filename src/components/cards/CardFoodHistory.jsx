@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line react/prop-types
 const NutritionWrap = ({ name, icon, value }) => {
   return (
@@ -10,18 +11,18 @@ const NutritionWrap = ({ name, icon, value }) => {
     </div>
   );
 };
-const CardFoodHistory = () => {
+const CardFoodHistory = ({data, portion}) => {
   return (
     <div className="w-full mt-5 border border-white-300 p-4 justify-between items-center flex flex-row flex-wrap">
       {/* info makanan */}
       <div className="flex flex-row gap-5 items-center">
         <img
-          src="/images/traditional-nasi-lemak.png"
+          src={data ? data.image:'https://picsum.photos/265/150'}
           alt=""
           className="w-20 h-20 rounded-full"
         />
         <div className="flex flex-col h-14">
-          <p className="text-lg font-semibold">Nasi Padang</p>
+          <p className="text-lg font-semibold">{data ? data.name:''}</p>
           <p className="text-sm text-slate-500">Makanan Utama</p>
         </div>
       </div>
@@ -30,27 +31,27 @@ const CardFoodHistory = () => {
         <NutritionWrap
           name={'Jumlah Lemak'}
           icon={'lemak-icon.svg'}
-          value={1000}
+          value={data ? data.fat:''}
         />
         <NutritionWrap
           name={'Jumlah Kalori'}
           icon={'kalori-icon.svg'}
-          value={1000}
+          value={data ? data.cal:''}
         />
         <NutritionWrap
           name={'Protein Lemak'}
           icon={'protein-icon.svg'}
-          value={1000}
+          value={data ? data.protein:''}
         />
         <NutritionWrap
           name={'Karbohidrat Lemak'}
           icon={'carbo-icon.svg'}
-          value={1000}
+          value={data ? data.carb:''}
         />
       </div>
       {/* pilih porsi */}
       <div className="w-32 h-9 rounded-full bg-slate-200 flex flex-row items-center justify-center">
-        <p>1 Porsi</p>
+        <p>{portion} Porsi</p>
       </div>
     </div>
   );

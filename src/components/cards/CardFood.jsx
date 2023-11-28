@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
-const CardFood = ({ name, description, fat, calorie, protein, carbohydrate }) => {
+const CardFood = ({ id, name, description, fat, calorie, protein, carbohydrate, image }) => {
 	return (
-		<div className="col-span-1 mx-auto bg-white rounded-lg shadow-[0px_0px_44px_-5px_rgba(0,0,0,0.10)]">
-			<img className="rounded-t-lg w-full" src="https://i.ibb.co/YbZR8mc/Group-40.png" alt="" />
+		<Link to={`/foods/${id}`} className="col-span-1 mx-auto bg-white rounded-lg shadow-[0px_0px_44px_-5px_rgba(0,0,0,0.10)]">
+			<img className="rounded-t-lg w-full max-h-[150px]" src={image||'https://picsum.photos/265/150'} alt={name} loading="lazy"/>
 			<div className="pt-5 pb-7 px-[14px] sm:px-[10px] ">
 				<h3 className="text-xl sm:text-mobile-xl font-semibold text-navy">{name}</h3>
 				<p className="text sm:text-sm text-navy opacity-80">{description}</p>
@@ -21,7 +23,7 @@ const CardFood = ({ name, description, fat, calorie, protein, carbohydrate }) =>
 					</div>
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 };
 
