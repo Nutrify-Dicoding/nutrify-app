@@ -6,11 +6,12 @@ const { generateFoodData } = require("./utils/food");
 const { generateCategories } = require('./utils/category');
 const jwt = require('jsonwebtoken');
 const HapiJwt = require('hapi-auth-jwt2');
+const argv = require('yargs').argv;
 const JWT_PRIVATE_KEY = 'be91b2f902a2729e7307fe4b111f30a0a34005060329c3d3e9ec64c3ded2276c';
 
 const init = async () => {
     const server = Hapi.server({
-        port: 3000,
+        port: argv.port || 3000,
         host: 'localhost',
         routes: {
             cors: {
