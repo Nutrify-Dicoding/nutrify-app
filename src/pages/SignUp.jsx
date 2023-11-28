@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import background from "../assets/background.png";
 
 const SignUp = () => {
@@ -59,9 +60,9 @@ const SignUp = () => {
             </form>
             <p className="mt-4 text-xs text-white text-center">
               Sudah punya akun?{' '}
-              <a href="#" className="text-[#FB8500] font-bold">
+              <Link to="/login" className="text-[#FB8500] font-bold">
                 Login
-              </a>
+              </Link>
             </p>
           </div>
         </div>
