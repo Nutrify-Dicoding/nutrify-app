@@ -1,5 +1,11 @@
 const getAllFoods = (req, res) => {
-    return req.server.app.dummyListFood;
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(res.response(req.server.app.dummyListFood));
+        }, 1000);
+    });
+
+    // return req.server.app.dummyListFood;
 }
 const getFoodById = (req, res) => {
     const { id } = req.params;

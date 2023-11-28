@@ -114,34 +114,49 @@ const getTrackingToday = (req, res) => {
             "food": [
                 {
                     "foodId": {
-                        "_id": "string unique",
-                        "name": "string",
-                        "image": "string",
-                        "category": "string unique",
-                        "cal": "number",
-                        "protein": "number",
-                        "carb": "number",
-                        "fat": "number",
+                        "_id": "xy3",
+                        "name": "Nasi Padang 2",
+                        "image": "/images/traditional-nasi-lemak.png",
+                        "category": "xyz",
+                        "cal": "129",
+                        "protein": "2.6",
+                        "carb": "14.7",
+                        "fat": "6.6",
                         "desc": "100gram"
                     },
-                    "portion": "number",
+                    "portion": "1",
                     "time": "time"
                 },
                 {
                     "foodId": {
-                        "_id": "string unique",
-                        "name": "string",
-                        "image": "string",
-                        "category": "string unique",
-                        "cal": "number",
-                        "protein": "number",
-                        "carb": "number",
-                        "fat": "number",
+                        "_id": "xy3",
+                        "name": "Nasi Padang 3",
+                        "image": "/images/traditional-nasi-lemak.png",
+                        "category": "xyz",
+                        "cal": "129",
+                        "protein": "2.6",
+                        "carb": "14.7",
+                        "fat": "6.6",
                         "desc": "100gram"
                     },
-                    "portion": "number",
+                    "portion": "1",
                     "time": "time"
-                }
+                },
+                {
+                    "foodId": {
+                        "_id": "xy3",
+                        "name": "Nasi Padang 4",
+                        "image": "/images/traditional-nasi-lemak.png",
+                        "category": "xyz",
+                        "cal": "129",
+                        "protein": "2.6",
+                        "carb": "14.7",
+                        "fat": "6.6",
+                        "desc": "100gram"
+                    },
+                    "portion": "1",
+                    "time": "time"
+                },
             ]
         },
         "totCarb": "number",
