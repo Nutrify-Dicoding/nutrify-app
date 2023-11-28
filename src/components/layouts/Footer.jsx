@@ -2,7 +2,7 @@ const Footer = () => {
 	return (
 		<footer className="w-full flex flex-col bg-navy justify-between  items-center  ">
 			<div className="flex h-full w-full flex-wrap md:flex-col flex-row items-center justify-between py-[5rem] md:py-12 px-[6.25%]">
-				<img src="icons/nutrify-logo-white.svg" alt="" />
+				<img src="/icons/nutrify-logo-white.svg" alt="" />
 				<div className="text-white flex flex-row  gap-4 items-center justify-center md:mb-5 md:mt-4 ">
 					<a href="#">Home</a>
 					<span className="w-[6px] h-[6px] bg-white rounded-full"></span>

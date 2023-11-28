@@ -1,5 +1,6 @@
 import Button from './buttons/Button';
 import CardFood from './cards/CardFood';
+import { Link } from 'react-router-dom';
 
 const Recommendation = () => {
 	return (
@@ -16,7 +17,9 @@ const Recommendation = () => {
 				))}
 			</div>
 			<div className="w-full flex justify-center">
-				<Button buttonText={'Selengkapnya'} />
+				<Link to="/">
+					<Button buttonText={'Selengkapnya'} />
+				</Link>
 			</div>
 		</div>
 	);

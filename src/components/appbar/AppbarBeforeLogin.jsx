@@ -1,13 +1,13 @@
 import ButtonLogin from '../buttons/ButtonLogin';
 import ButtonSignup from '../buttons/ButtonSignup';
-
+import { Link } from 'react-router-dom';
 const AppbarBeforeLogin = () => {
   return (
     <>
       <nav className="bg-white border-gray-200 border-b-[1px] w-full px-[6.25%] fixed m-0">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
-          <a
-            href="https://flowbite.com/"
+          <Link
+            to="/"
             className="flex items-center space-x-3 rtl:space-x-reverse">
             <img
               src="/icons/nutrify-logo.svg"
@@ -15,11 +15,11 @@ const AppbarBeforeLogin = () => {
               width={168}
               height={68}
             />
-          </a>
+          </Link>
 
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <div className="hidden md:flex flex-row gap-2 ">
-              <ButtonLogin />
+              <Link to={"/auth/signin"}><ButtonLogin /></Link>
               <ButtonSignup />
             </div>
 
@@ -51,12 +51,12 @@ const AppbarBeforeLogin = () => {
             id="navbar-cta">
             <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white ">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="block py-2 px-3 md:p-0 text-black hover:text-orange rounded md:bg-transparent md:text-orange-700 md:dark:text-orange-500"
                   aria-current="page">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <a

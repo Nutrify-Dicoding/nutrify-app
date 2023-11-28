@@ -1,0 +1,19 @@
+<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_55_25)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.49486 3.62971C6.99535 1.66375 4.49481 1.13492 2.61602 2.93514C0.737233 4.73537 0.472726 7.74525 1.94815 9.87438C3.17486 11.6446 6.88733 15.3782 8.10408 16.5866C8.2402 16.7218 8.30827 16.7894 8.38766 16.8159C8.45695 16.8391 8.53278 16.8391 8.60207 16.8159C8.68146 16.7894 8.74952 16.7218 8.88565 16.5866C10.1024 15.3782 13.8149 11.6446 15.0416 9.87438C16.517 7.74525 16.2848 4.71643 14.3737 2.93514C12.4626 1.15385 9.99438 1.66375 8.49486 3.62971Z" stroke="#FB8500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="6" y="2" width="8" height="3" fill="#FB8500"/>
+<rect x="2" y="2" width="13" height="4" fill="#FB8500"/>
+<rect x="2" y="5" width="14" height="5" fill="#FB8500"/>
+<rect x="3" y="8" width="11" height="4" fill="#FB8500"/>
+<rect x="5" y="11" width="3" height="2" fill="#FB8500"/>
+<rect x="7" y="12" width="3" height="2" fill="#FB8500"/>
+<rect x="9" y="12" width="3" height="2" fill="#FB8500"/>
+<rect x="8" y="14" width="3" height="2" fill="#FB8500"/>
+<rect x="6" y="13" width="3" height="2" fill="#FB8500"/>
+</g>
+<defs>
+<clipPath id="clip0_55_25">
+<rect width="17" height="18" fill="white"/>
+</clipPath>
+</defs>
+</svg>
