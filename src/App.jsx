@@ -8,6 +8,7 @@ import Tracking from './pages/Tracking';
 import AllTrack from './pages/AllTrack';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
+import Advice from './pages/Advice';
 import LoginExample from './pages/LoginExample';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 					<Route path="/profile/edit" element={<EditProfile />} />
 					<Route path='/auth/signin' element={<LoginExample />} />
 					<Route path="/foods/:food_id" element={<FoodDetail />} />
+					<Route path="/advice" element={<Advice />} />
 				</Routes>
 			</Layout>
 		</BrowserRouter>
