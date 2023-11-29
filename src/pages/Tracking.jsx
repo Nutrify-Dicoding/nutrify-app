@@ -23,15 +23,12 @@ const Tracking = () => {
 			})
 	}, [token]);
 	return (
-		<section className="px-[12.25%] w-full tab:h-full tab:pt-[4rem] mt-36 ">
-			<p
-				className="text-xl font-bold
-        "
-			>
+		<section className="px-[6.25%] w-full tab:h-full pt-32">
+			<p className="text-xl font-bold" >
 				Pilih Makanan
 			</p>
 			<CardFoodChosen />
-			<div className="w-full mt-10 flex flex-row flex-wrap items-center justify-between">
+			<div className="grid grid-cols-4 gap-5 lg:grid-cols-2 sm:grid-cols-1 mt-5">
 				<CardNutritionTrack name={'Lemak'} icon={'lemak-icon.svg'} percentase={'+10%'} value={1000} target={1000} text={'Capaian menjadi'} />{' '}
 				<CardNutritionTrack
 					name={'Kalori'}
