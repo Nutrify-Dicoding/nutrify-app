@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import Button from '../components/buttons/Button';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { errorInterceptor } from '../utils/axiosInterceptor';
+import { addMessage } from '../redux/slices/toastifySlice';
 
 const EditProfile = () => {
+	const dispatch = useDispatch();
 	const token = useSelector((state) => state.auth.token)
 	const [user, setUser] = useState({});
 	const navigate = useNavigate();
@@ -21,15 +22,12 @@ const EditProfile = () => {
 				'Authorization': `Bearer ${token}`,
 			},
 		};
+		axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate, dispatch }));
 		axios.get('/profile', config)
 			.then((res) => {
-				if (res.status === 200) setUser(res.data);
+				if (res.status === 200) setUser(res.data)
 			})
-			.catch((err) => {
-				if (err.response.status === 401) navigate('/auth/signin')
-				else console.log(err);
-			});
-	}, [token, navigate]);
+	}, [token, navigate, dispatch]);
 	const handleInputChange = (e) => {
 		setUser({
 			...user,
@@ -38,28 +36,29 @@ const EditProfile = () => {
 		console.log(user)
 	};
 	const saveProfile = () => {
-		console.log(user)
+		// console.log(user)
 		const config = {
 			headers: {
 				'Authorization': `Bearer ${token}`,
 			},
 		};
+		axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate }));
 		axios.put('/profile', user, config)
 			.then((res) => {
 				if (res.status === 200 && res.data) {
-					toast.success(res.data.message, {position: "bottom-right"})
+					// toast.success(res.data.message, { position: "bottom-right" })
+					dispatch(addMessage({
+						text: res.data.message,
+						type: 'success',
+						option: { position: "bottom-right" }
+					}));
 				}
 			})
-			.catch((err) => {
-				if (err.response.status === 401) navigate('/auth/signin')
-				else console.log(err);
-			});
 	}
 
 	return (
 		<section className="pt-24 px-[6.25%] text-navy mb-20 sm:mb-12">
 			<Breadcrumb items={breadcrumbItems} />
-			<ToastContainer />
 			<div className="border p-4 rounded-lg mt-2">
 				<div className="font-semibold border-b pb-2 text-xl">Edit Informasi Pribadi</div>
 				<div className="grid grid-cols-2 sm:grid-cols-1">

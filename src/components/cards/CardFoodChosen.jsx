@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedFoodPortion } from '../../redux/slices/selectedFoodSlice';
 
 // eslint-disable-next-line react/prop-types
 const NutritionWrap = ({ name, icon, value }) => {
@@ -13,31 +15,38 @@ const NutritionWrap = ({ name, icon, value }) => {
   );
 };
 const CardFoodChosen = () => {
-  const [porsi, setPorsi] = useState(0);
+  const selectedFood = useSelector((state) => state.selectedFood)
+  const [porsi, setPorsi] = useState(selectedFood.portion);
+  const dispatch = useDispatch();
 
   const hanldeMinPorsi = () => {
-    if (porsi > 0) {
+    if (porsi > 1) {
       setPorsi((prev) => prev - 1);
+      dispatch(setSelectedFoodPortion({
+        portion: porsi - 1
+      }))
     }
   };
 
   const hanldePlusPorsi = () => {
     setPorsi((prev) => prev + 1);
+    dispatch(setSelectedFoodPortion({
+      portion: porsi + 1
+    }))
   };
-
   return (
-    <div className="w-full mt-5 border border-white-300 p-4 sm:p-2 flex rounded-lg">
+    <div className={`w-full mt-5 border border-white-300 p-4 sm:p-2 flex rounded-lg ${selectedFood.food_id ? '' : 'hidden'}`}>
       <div className="flex items-center">
         <img
-          src={'/images/traditional-nasi-lemak.png'}
-          alt={''}
+          src={selectedFood.image}
+          alt={'Gambar Makanan'}
           className="w-[70px] h-[70px] max-w-[70px] rounded-full"
         />
       </div>
       <div className="w-full flex md:block justify-between md:justify-start ps-4 sm:ps-3 items-center">
         <div className="flex justify-between">
           <div>
-            <p className="text-lg font-semibold whitespace-nowrap">{'Nasi Padang'}</p>
+            <p className="text-lg font-semibold whitespace-nowrap">{selectedFood.name}</p>
             <p className="text-sm text-slate-500 whitespace-nowrap">Makanan Utama</p>
           </div>
         </div>
@@ -45,22 +54,22 @@ const CardFoodChosen = () => {
           <NutritionWrap
             name={'Lemak'}
             icon={'lemak-icon.svg'}
-            value={1000}
+            value={selectedFood.fat}
           />
           <NutritionWrap
             name={'Kalori'}
             icon={'kalori-icon.svg'}
-            value={1000}
+            value={selectedFood.cal}
           />
           <NutritionWrap
             name={'Protein'}
             icon={'protein-icon.svg'}
-            value={1000}
+            value={selectedFood.protein}
           />
           <NutritionWrap
             name={'Karbohidrat'}
             icon={'carbo-icon.svg'}
-            value={1000}
+            value={selectedFood.carb}
           />
         </div>
         <div className="w-auto md:w-full">
