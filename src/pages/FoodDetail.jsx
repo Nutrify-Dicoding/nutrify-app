@@ -1,24 +1,36 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import Recommendation from '../components/Recommendation';
 import Button from '../components/buttons/Button';
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { errorInterceptor } from '../utils/axiosInterceptor';
+import { setSelectedFood } from '../redux/slices/selectedFoodSlice';
+
 const FoodDetail = () => {
 	const { food_id } = useParams();
 	const [showDescription, setshowDescription] = useState(true);
 	const [breadcrumbItems, setBreadcrumbItems] = useState([]);
 	const [foodDetail, setFoodDetail] = useState({})
 	const [favorited, setFavorited] = useState(false)
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
 	const token = useSelector((state) => state.auth.token)
 	useEffect(() => {
 		window.scrollTo({
 			top: 0,
 			behavior: 'smooth',
 		});
+		const config = {
+			headers: {
+				'Authorization': `Bearer ${token}`,
+			},
+		};
+		axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate, dispatch }));
 		const request1 = axios.get(`/foods/${food_id}`)
-		const request2 = axios.get(`/favorites`)
+		const request2 = axios.get(`/favorites`, config)
 
 		axios.all([request1, request2])
 			.then(axios.spread((response1, response2) => {
@@ -40,7 +52,7 @@ const FoodDetail = () => {
 				console.log(err);
 			})
 
-	}, [food_id]);
+	}, [food_id, dispatch, navigate, token]);
 
 	const toogleFavorite = () => {
 		const formData = {
@@ -54,14 +66,27 @@ const FoodDetail = () => {
 		const request = favorited ?
 			axios.delete(`/favorites/${food_id}`, config) :
 			axios.post(`/favorites`, formData, config)
-		request.then((res) => {
-			if (res.status === 200 && res.data) {
-				setFavorited(!favorited)
-			}
-		})
-		.catch((err) => {
-			console.log(err);
-		})
+		request
+			.then((res) => {
+				if (res.status === 200 && res.data) {
+					setFavorited(!favorited)
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			})
+	}
+	const selectFood = () => {
+		dispatch(setSelectedFood({
+			food_id: foodDetail._id,
+			name: foodDetail.name,
+			image: foodDetail.image,
+			fat: foodDetail.fat,
+			carb: foodDetail.carb,
+			protein: foodDetail.protein,
+			cal: foodDetail.cal,
+		}))
+		navigate('/track')
 	}
 	return (
 		<>
@@ -130,7 +155,9 @@ const FoodDetail = () => {
 								</div>
 
 								<div className="pt-11 flex items-center tab:justify-end">
-									<Button buttonText={'Pilih Makanan'} />
+									<div onClick={() => { selectFood() }}>
+										<Button buttonText={'Pilih Makanan'} />
+									</div>
 									<button className="me-2 ml-4 py-2 px-3 border-orange border-2 rounded-lg" onClick={() => toogleFavorite()}>
 										<img src={favorited ? '/icons/love-full.svg' : '/icons/love.svg'} alt="Love Icon" className="inline" />
 									</button>
