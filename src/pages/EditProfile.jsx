@@ -1,48 +1,105 @@
-import Breadcrumb from "../components/Breadcrumb"
-import Button from "../components/buttons/Button"
+import { useEffect, useState } from 'react';
+import Breadcrumb from '../components/Breadcrumb';
+import Button from '../components/buttons/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { errorInterceptor } from '../utils/axiosInterceptor';
+import { addMessage } from '../redux/slices/toastifySlice';
 
 const EditProfile = () => {
-    const breadcrumbItems = [
-        { label: 'Profile', url: '/profile' },
-        { label: 'Edit Profile', url: '#' },
-    ];
-    return (
-        <section className="pt-24 px-[6.25%] text-navy">
-            <Breadcrumb items={breadcrumbItems} />
-            <div className="border p-4 rounded-lg mt-2">
-                <div className="font-semibold border-b pb-2 text-xl">Edit Informasi Pribadi</div>
-                <div className="grid grid-cols-2 sm:grid-cols-1">
-                    <div className="pe-12 sm:pe-0">
-                        <div className="font-medium mt-5">Email</div>
-                        <input className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value="contact@gmail.com" />
-                    </div>
-                    <div className="pe-12 sm:pe-0">
-                        <div className="font-medium mt-5">Jenis Kelamin</div>
-                        <input className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value="Perempuan" />
-                    </div>
-                    <div className="pe-12 sm:pe-0">
-                        <div className="font-medium mt-5">Umur</div>
-                        <input className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value="16 Tahun" />
-                    </div>
-                    <div className="pe-12 sm:pe-0">
-                        <div className="font-medium mt-5">Berat Badan</div>
-                        <input className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value="40 Kilogram" />
-                    </div>
-                    <div className="pe-12 sm:pe-0">
-                        <div className="font-medium mt-5">Tinggi Badan</div>
-                        <input className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value="165 Centimeter" />
-                    </div>
-                    <div className="pe-12 sm:pe-0">
-                        <div className="font-medium mt-5">Tingkat Kegiatan</div>
-                        <input className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value="Rendah" />
-                    </div>
-                </div>
-            </div>
-            <div className="text-center mt-12 mb-16">
-                <Button buttonText={"Simpan Data"} />
-            </div>
-        </section>
-    )
-}
+	const dispatch = useDispatch();
+	const token = useSelector((state) => state.auth.token)
+	const [user, setUser] = useState({});
+	const navigate = useNavigate();
+	const breadcrumbItems = [
+		{ label: 'Profile', url: '/profile' },
+		{ label: 'Edit Profile', url: '#' },
+	];
+	useEffect(() => {
+		const config = {
+			headers: {
+				'Authorization': `Bearer ${token}`,
+			},
+		};
+		axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate, dispatch }));
+		axios.get('/profile', config)
+			.then((res) => {
+				if (res.status === 200) setUser(res.data)
+			})
+	}, [token, navigate, dispatch]);
+	const handleInputChange = (e) => {
+		setUser({
+			...user,
+			[e.target.name]: e.target.value,
+		});
+		console.log(user)
+	};
+	const saveProfile = () => {
+		// console.log(user)
+		const config = {
+			headers: {
+				'Authorization': `Bearer ${token}`,
+			},
+		};
+		axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate }));
+		axios.put('/profile', user, config)
+			.then((res) => {
+				if (res.status === 200 && res.data) {
+					// toast.success(res.data.message, { position: "bottom-right" })
+					dispatch(addMessage({
+						text: res.data.message,
+						type: 'success',
+						option: { position: "bottom-right" }
+					}));
+				}
+			})
+	}
 
-export default EditProfile
+	return (
+		<section className="pt-24 px-[6.25%] text-navy mb-20 sm:mb-12">
+			<Breadcrumb items={breadcrumbItems} />
+			<div className="border p-4 rounded-lg mt-2">
+				<div className="font-semibold border-b pb-2 text-xl">Edit Informasi Pribadi</div>
+				<div className="grid grid-cols-2 sm:grid-cols-1">
+					<div className="pe-12 sm:pe-0">
+						<div className="font-medium mt-5">Email</div>
+						<input name='email' className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value={user.email || ''} onChange={handleInputChange}
+						/>
+					</div>
+					<div className="pe-12 sm:pe-0">
+						<div className="font-medium mt-5">Jenis Kelamin</div>
+						<select name='gender' onChange={handleInputChange} value={user.gender || ''} className='p-3 w-full bg-white-100 outline-gray-500 focus:outline-white-400'>
+							<option value="wanita">Wanita</option>
+							<option value="pria">Pria</option>
+						</select>
+
+					</div>
+					<div className="pe-12 sm:pe-0">
+						<div className="font-medium mt-5">Umur</div>
+						<input name='umur' onChange={handleInputChange} className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value={user.umur || ''} />
+					</div>
+					<div className="pe-12 sm:pe-0">
+						<div className="font-medium mt-5">Berat Badan</div>
+						<input name='berat' onChange={handleInputChange} className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value={user.berat || ''} />
+					</div>
+					<div className="pe-12 sm:pe-0">
+						<div className="font-medium mt-5">Tinggi Badan</div>
+						<input name='tinggi' onChange={handleInputChange} className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value={user.tinggi | ''} />
+					</div>
+					<div className="pe-12 sm:pe-0">
+						<div className="font-medium mt-5">Tingkat Kegiatan</div>
+						<input name='levelAktivitas' onChange={handleInputChange} className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value={user.levelAktivitas ? user.levelAktivitas.ket : ''} />
+					</div>
+				</div>
+			</div>
+			<div className="text-center mt-12 mb-16">
+				<div onClick={() => saveProfile()}>
+					<Button buttonText={'Simpan Data'} onClick={() => saveProfile()} />
+				</div>
+			</div>
+		</section>
+	);
+};
+
+export default EditProfile;
