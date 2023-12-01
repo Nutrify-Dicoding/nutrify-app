@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setAuth, addMessage } from "../redux/slices/authSlice";
+import { setAuth } from "../redux/slices/authSlice";
+import { addMessage } from "../redux/slices/toastifySlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
