@@ -4,6 +4,7 @@ export default {
 	theme: {
 		screens: {
 			xl: { max: '1281px' },
+			'2lg': { max: '1100px' },
 			lg: { max: '1025px' },
 			tab: { max: '841px' },
 			md: { max: '769px' },
