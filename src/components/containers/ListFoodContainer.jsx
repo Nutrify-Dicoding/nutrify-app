@@ -21,6 +21,7 @@ const ListFoodContainer = () => {
 		} else {
 			path = `/foods`
 		}
+		setFoods([]);
 		setIsFetching(true);
 		axios
 			.get(path)

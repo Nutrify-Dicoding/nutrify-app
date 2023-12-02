@@ -11,7 +11,7 @@ const CardNutritionTrack = ({ name, icon, percentase, value, target, text }) => 
 				<p className="font-bold text-lg">{percentase}</p>
 			</div>
 
-			<p className="text-base font-medium text-gray-400 mt-5">
+			<p className="text-base font-medium text-gray-400 mt-5 lg:mt-5 xl:mt-2">
 				{text}{' '}
 				<span className="text-green font-semibold">
 					{value}/{target}
