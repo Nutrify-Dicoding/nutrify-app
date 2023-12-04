@@ -14,6 +14,7 @@ const AppbarAfterLogin = () => {
 	}, [isAuthenticated, navigate]);
 	const logout = () => {
 		dispatch(clearAuth());
+		navigate('/auth/signin');
 	};
 	return (
 		<>
@@ -52,7 +53,7 @@ const AppbarAfterLogin = () => {
 							<div className={`absolute ${isOpen ? 'block' : 'hidden'}`}>
 								<ul className="mt-4 ms-[-50px] lg:ms-[-80px] bg-white">
 									<li className="py-2 px-5 border">
-										<Link to={'/profile'}>Profile</Link>
+										<Link to={'/profile'} onClick={()=> setIsOpen(!isOpen)}>Profile</Link>
 									</li>
 									<li className="py-2 px-5 border" role="button" onClick={() => logout()}>
 										Logout

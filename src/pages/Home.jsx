@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Banner from '../components/Banner';
 import FilterContainer from '../components/containers/FilterContainer';
 import ListFoodContainer from '../components/containers/ListFoodContainer';
@@ -10,7 +11,7 @@ const Home = () => {
 				<Banner />
 				<div className="w-full  mt-12 flex flex-row justify-between ">
 					<p className="text-xl font-semibold text-navy">Capaian Harianmu</p>
-					<p className="text-l font-semibold text-orange">Lihat semua</p>
+					<p className="text-l font-semibold text-orange"><Link to={"/alltrack"}>Lihat semua</Link></p>
 				</div>
 				<TrackingContainer />
 				<FilterContainer />

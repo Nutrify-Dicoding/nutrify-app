@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { errorInterceptor } from '../utils/axiosInterceptor';
 
 const Profile = () => {
 	const dispatch = useDispatch();
@@ -17,10 +16,9 @@ const Profile = () => {
 				'Authorization': `Bearer ${token}`,
 			},
 		};
-		axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate, dispatch }));
 		axios.get('/profile', config)
 			.then((res) => {
-				if (res.status === 200) setUser(res.data);
+				if (res.status === 200) setUser(res.data.profile);
 			})
 			.finally(() => {
 				setIsFetching(false);

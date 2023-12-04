@@ -1,16 +1,21 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ItemFilter from '../items/ItemFilter';
-import axios from 'axios';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../redux/slices/foodsFilterSlice";
 
 const FilterContainer = () => {
-	// const categories = ['Main Dish', 'Dessert', 'Bon Appetite', 'Drinks', 'Vegetarian', 'Meat', 'Soup'];
+	const token = useSelector((state) => state.auth.token)
 	const [categories, setCategories] = useState([]);
 	const dispatch = useDispatch();
 	useEffect(() => {
+		const config = {
+			headers: {
+				'Authorization': `Bearer ${token}`,
+			},
+		};
 		axios
-			.get(`/categories`)
+			.get(`/category`, config)
 			.then((response) => {
 				if (response.status === 200) {
 					setCategories(
@@ -21,7 +26,7 @@ const FilterContainer = () => {
 			.catch((error) => {
 				console.log(error);
 			});
-	}, []);
+	}, [token]);
 	const selectCategory = (id) => {
 		console.log(id)
 		dispatch(setFilter({
