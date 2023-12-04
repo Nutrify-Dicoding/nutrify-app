@@ -4,8 +4,7 @@ import Button from '../components/buttons/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { errorInterceptor } from '../utils/axiosInterceptor';
-import { addMessage } from '../redux/slices/toastifySlice';
+import { toast } from 'react-toastify';
 
 const EditProfile = () => {
 	const dispatch = useDispatch();
@@ -22,10 +21,9 @@ const EditProfile = () => {
 				'Authorization': `Bearer ${token}`,
 			},
 		};
-		axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate, dispatch }));
 		axios.get('/profile', config)
 			.then((res) => {
-				if (res.status === 200) setUser(res.data)
+				if (res.status === 200) setUser(res.data.profile)
 			})
 	}, [token, navigate, dispatch]);
 	const handleInputChange = (e) => {
@@ -33,27 +31,36 @@ const EditProfile = () => {
 			...user,
 			[e.target.name]: e.target.value,
 		});
-		console.log(user)
 	};
 	const saveProfile = () => {
-		// console.log(user)
 		const config = {
 			headers: {
 				'Authorization': `Bearer ${token}`,
 			},
 		};
-		axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate }));
-		axios.put('/profile', user, config)
+		const formData = {
+			"username": user.username,
+			"gender": user.gender,
+			"tinggi": user.tinggi,
+			"berat": user.berat,
+			"levelAktivitas": user.levAktivitas,
+			"umur": user.umur,
+		}
+		console.log(user)
+		axios.put('/profile', formData, config)
 			.then((res) => {
 				if (res.status === 200 && res.data) {
-					// toast.success(res.data.message, { position: "bottom-right" })
-					dispatch(addMessage({
-						text: res.data.message,
-						type: 'success',
-						option: { position: "bottom-right" }
-					}));
+					toast.success(res.data.message, { position: "bottom-right" })
+				} else {
+					toast.error(res.data.message ?? 'Something went wrong', { position: "bottom-right" })
 				}
 			})
+	}
+	const setlevAktivitas = (choice) => {
+		setUser({
+			...user,
+			levAktivitas: choice.target.value,
+		});
 	}
 
 	return (
@@ -89,7 +96,13 @@ const EditProfile = () => {
 					</div>
 					<div className="pe-12 sm:pe-0">
 						<div className="font-medium mt-5">Tingkat Kegiatan</div>
-						<input name='levelAktivitas' onChange={handleInputChange} className="p-3 w-full bg-white-100 rounded focus:outline-white-400" type="text" value={user.levelAktivitas ? user.levelAktivitas.ket : ''} />
+						<select onChange={(choice) => setlevAktivitas(choice)} name="gender" className='p-3 w-full bg-white-100 rounded focus:outline-white-400'>
+							<option value="1">sangat ringan (0 x olahraga / minggu)</option>
+							<option value="2">ringan (1-3 x olahraga / minggu)</option>
+							<option value="3">sedang (3-5 x olahraga / minggu)</option>
+							<option value="4">berat (5-6 x olahraga / minggu)</option>
+							<option value="5">sangat berat (2 x olahraga / sehari)</option>
+						</select>
 					</div>
 				</div>
 			</div>

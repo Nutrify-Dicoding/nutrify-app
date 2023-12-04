@@ -5,7 +5,6 @@ import Recommendation from '../components/Recommendation';
 import Button from '../components/buttons/Button';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { errorInterceptor } from '../utils/axiosInterceptor';
 import { setSelectedFood } from '../redux/slices/selectedFoodSlice';
 
 const FoodDetail = () => {
@@ -14,10 +13,12 @@ const FoodDetail = () => {
 	const [breadcrumbItems, setBreadcrumbItems] = useState([]);
 	const [foodDetail, setFoodDetail] = useState({})
 	const [favorited, setFavorited] = useState(false)
+	const [favoriteID, setFavoriteID] = useState('')
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const token = useSelector((state) => state.auth.token)
+	const user_id = useSelector((state) => state.auth.userInfo._id)
 	useEffect(() => {
 		window.scrollTo({
 			top: 0,
@@ -28,10 +29,8 @@ const FoodDetail = () => {
 				'Authorization': `Bearer ${token}`,
 			},
 		};
-		axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate, dispatch }));
-		const request1 = axios.get(`/foods/${food_id}`)
-		const request2 = axios.get(`/favorites`, config)
-
+		const request1 = axios.get(`/foods/${food_id}`, config)
+		const request2 = axios.get(`/favorite`, config)
 		axios.all([request1, request2])
 			.then(axios.spread((response1, response2) => {
 				if (response1.status === 200 && response1.data) {
@@ -41,9 +40,12 @@ const FoodDetail = () => {
 						{ label: response1.data.name, url: '#' },
 					])
 				}
-				if (response2.status === 200 && response1.status === 200 && response2.data) {
+				if (response2.status === 201 && response1.status === 200 && response2.data) {
 					const food_id = response1.data._id
-					if (response2.data.filter((favorite) => favorite._id === food_id).length > 0) {
+					console.log(response2.data, 'response2')
+					if (response2.data.body.filter((favorite) => favorite.food._id === food_id).length > 0) {
+						const favorite = response2.data.body.filter((favorite) => favorite.food._id === food_id)[0]
+						setFavoriteID(favorite._id)
 						setFavorited(true)
 					}
 				}
@@ -56,7 +58,8 @@ const FoodDetail = () => {
 
 	const toogleFavorite = () => {
 		const formData = {
-			food: food_id
+			food: food_id,
+			user: user_id,
 		}
 		const config = {
 			headers: {
@@ -64,16 +67,16 @@ const FoodDetail = () => {
 			},
 		};
 		const request = favorited ?
-			axios.delete(`/favorites/${food_id}`, config) :
-			axios.post(`/favorites`, formData, config)
+			axios.delete(`/favorite/${favoriteID}`, config) :
+			axios.post(`/favorite`, formData, config)
 		request
 			.then((res) => {
 				if (res.status === 200 && res.data) {
 					setFavorited(!favorited)
+					if(res.data.body.favorite){
+						setFavoriteID(res.data.body.favorite)
+					}
 				}
-			})
-			.catch((err) => {
-				console.log(err);
 			})
 	}
 	const selectFood = () => {

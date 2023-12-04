@@ -2,9 +2,12 @@ import Recommendation from '../components/Recommendation';
 import CardInfoBody from '../components/cards/CardInfoBody';
 import CardNutritionTrack from '../components/cards/CardNutritionTrack';
 import CardFoodHistory from '../components/cards/CardFoodHistory';
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { id } from 'date-fns/locale';
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
 
 const dataBodyUser = [
 	{
@@ -24,22 +27,49 @@ const dataBodyUser = [
 ];
 
 const AllTrack = () => {
-	const [historyFoods, setHistoryFoods] = useState([]);
 	const token = useSelector((state) => state.auth.token)
+	const [historyFoods, setHistoryFoods] = useState([]);
+	const [selectedDate, setSelectedDate] = useState(null);
+	const [selectDate, setSelectDate] = useState(false);
+	const [nutritionTotal, setNutritionTotal] = useState({});
+	const userInfo = useSelector((state) => state.auth.userInfo);
+
 	useEffect(() => {
-		const config = {
-			headers: {
-				'Authorization': `Bearer ${token}`,
-			},
-		};
-		axios.get('/tracking', config)
-			.then((res) => {
-				if (res.status === 200 && res.data) {
-					setHistoryFoods(res.data.tracking.food);
-					// console.log(res.data.tracking.food)
-				}
-			})
-	}, [token]);
+		if (!selectedDate) setSelectedDate(new Date());
+		if (selectedDate) {
+			const config = {
+				headers: {
+					'Authorization': `Bearer ${token}`,
+				},
+			};
+			const year = selectedDate.getFullYear();
+			const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+			const date = String(selectedDate.getDate()).padStart(2, '0');
+			const resFormat = `${year}-${month}-${date}T00:00:00.000Z`;
+
+			axios.post('/track/history', { date: resFormat }, config)
+				.then((res) => {
+					if (res.status === 200 && res.data) {
+						setHistoryFoods(res.data.body.tracking.food);
+						setNutritionTotal(res.data.body.result);
+					}
+				})
+		}
+	}, [selectedDate, token]);
+
+	const formatDate = (date) => {
+		if (!date) return '';
+		const monthNames = [
+			'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+			'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+		];
+		const day = date.getDate();
+		const monthIndex = date.getMonth();
+		const year = date.getFullYear();
+		const monthName = monthNames[monthIndex];
+		const formattedDate = `${day} ${monthName} ${year}`;
+		return formattedDate;
+	}
 	return (
 		<>
 			<section className="mt-32 px-[6.25%] grid grid-cols-2 gap-5 tab:grid-cols-1">
@@ -57,45 +87,57 @@ const AllTrack = () => {
 				})}
 			</section>
 			<section className="px-[6.25%] mt-8">
-				<div className="flex justify-between items-center mb-5">
+				<div className="flex justify-between overflow-hidden max-h-10 mb-5">
 					<h2 className="text-2xl text-navy font-semibold">Nutrisi</h2>
-					<div className="flex items-center">
-						<img className="w-[18px] h-[18px] mr-[10px]" src="/icons/calendar.svg" alt="Icon Calendar" />
-						<p className="text-white-500 font-medium">12 Agustus 2023</p>
+					<div>
+						<div className="flex items-center cursor-pointer" onClick={() => setSelectDate(!selectDate)}>
+							<img className="w-[18px] h-[18px] mr-[10px]" src="/icons/calendar.svg" alt="Icon Calendar" />
+							<p className="text-white-500 font-medium">{formatDate(selectedDate)}</p>
+						</div>
+						<div className={`bg-white absolute ms-[-150px] z-10 mt-3 border shadow-lg ${selectDate ? 'block' : 'hidden'}`}>
+							<DayPicker
+								locale={id}
+								mode="single" selected={selectedDate} onDayClick={(date) => setSelectedDate(date)}
+								modifiersClassNames={{
+									selected: 'my-selected',
+									today: 'my-today'
+								}}
+							/>
+						</div>
 					</div>
 				</div>
 				<div className="grid grid-cols-4 gap-5 lg:grid-cols-2 sm:grid-cols-1">
 					<CardNutritionTrack
 						name={'Lemak'}
 						icon={'lemak-icon.svg'}
-						percentase={'+10%'}
-						value={1000}
-						target={1000}
-						text={'Target Menjadi'}
-					/>{' '}
+						percentase={parseInt(nutritionTotal.totFat / userInfo.fatNeeded * 100) + '%'}
+						value={nutritionTotal.totFat}
+						target={parseInt(userInfo.fatNeeded)}
+						text={'Capaian menjadi'}
+					/>
 					<CardNutritionTrack
 						name={'Kalori'}
 						icon={'kalori-icon.svg'}
-						percentase={'+10%'}
-						value={1000}
-						target={1000}
-						text={'Target Menjadi'}
+						percentase={parseInt(nutritionTotal.totCal / userInfo.caloriNeeded * 100) + '%'}
+						value={nutritionTotal.totCal}
+						target={parseInt(userInfo.caloriNeeded)}
+						text={'Capaian menjadi'}
 					/>
 					<CardNutritionTrack
 						name={'Protein'}
 						icon={'protein-icon.svg'}
-						percentase={'+10%'}
-						value={1000}
-						target={1000}
-						text={'Target Menjadi'}
+						percentase={parseInt(nutritionTotal.totProtein / userInfo.proteinNeeded * 100) + '%'}
+						value={nutritionTotal.totProtein}
+						target={parseInt(userInfo.proteinNeeded)}
+						text={'Capaian menjadi'}
 					/>
 					<CardNutritionTrack
 						name={'Karbohidrat'}
 						icon={'carbo-icon.svg'}
-						percentase={'+10%'}
-						value={1000}
-						target={1000}
-						text={'Target Menjadi'}
+						percentase={parseInt(nutritionTotal.totCarb / userInfo.carboNeeded * 100) + '%'}
+						value={nutritionTotal.totCarb}
+						target={parseInt(userInfo.carboNeeded)}
+						text={'Capaian menjadi'}
 					/>
 				</div>
 			</section>
@@ -104,10 +146,9 @@ const AllTrack = () => {
 					<h2 className="text-2xl text-navy font-semibold">Riwayat Makanan</h2>
 				</div>
 				<div>
-					{/* <CardFoodHistory /> */}
-					{historyFoods.map((x) => {
+					{historyFoods.map((x, index) => {
 						return <CardFoodHistory
-							key={x.foodId._id}
+							key={index}
 							data={x.foodId}
 							portion={x.portion}
 						/>
