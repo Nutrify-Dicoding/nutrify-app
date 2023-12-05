@@ -161,7 +161,9 @@ const LandingPage = () => {
 					))}
 				</div>
 				<div className="w-full flex justify-center">
-					<Button buttonText={'Selengkapnya'} />
+					<Link to={'/home'}>
+						<Button buttonText={'Selengkapnya'} />
+					</Link>
 				</div>
 			</section>
 			<section className="px-[6.25%] pb-[5rem]">

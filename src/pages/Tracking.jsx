@@ -89,7 +89,6 @@ const Tracking = () => {
 					return <CardFoodHistory key={x.foodId._id} data={x.foodId} portion={x.portion} />;
 				})}
 			</div>
-
 			<Recommendation />
 		</section>
 	);
