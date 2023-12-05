@@ -12,6 +12,7 @@ import Advice from './pages/Advice';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import SignUp from './pages/SignUp';
+import Favorite from './pages/Favorite';
 
 function App() {
 	const auth = useSelector((state) => state.auth);
@@ -33,6 +34,7 @@ function App() {
 					<Route path="/login" element={<Login />} />
 					<Route path="/signup" element={<SignUp />} />
 					<Route path="/advice" element={<Advice />} />
+					<Route path="/favorite" element={<Favorite />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Layout>

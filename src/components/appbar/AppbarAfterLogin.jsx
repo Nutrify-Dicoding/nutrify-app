@@ -55,6 +55,9 @@ const AppbarAfterLogin = () => {
 									<li className="py-2 px-5 border">
 										<Link to={'/profile'} onClick={()=> setIsOpen(!isOpen)}>Profile</Link>
 									</li>
+									<li className="py-2 px-5 border">
+										<Link to={'/favorite'} onClick={()=> setIsOpen(!isOpen)}>Favorit</Link>
+									</li>
 									<li className="py-2 px-5 border" role="button" onClick={() => logout()}>
 										Logout
 									</li>

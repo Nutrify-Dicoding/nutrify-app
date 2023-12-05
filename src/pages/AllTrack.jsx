@@ -2,6 +2,7 @@ import Recommendation from '../components/Recommendation';
 import CardInfoBody from '../components/cards/CardInfoBody';
 import CardNutritionTrack from '../components/cards/CardNutritionTrack';
 import CardFoodHistory from '../components/cards/CardFoodHistory';
+import PlaceholderCardFoodHistory from '../components/placeholder/PlaceholderCardFoodHistory';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -33,6 +34,7 @@ const AllTrack = () => {
 	const [selectDate, setSelectDate] = useState(false);
 	const [nutritionTotal, setNutritionTotal] = useState({});
 	const userInfo = useSelector((state) => state.auth.userInfo);
+	const [isFetching, setIsFetching] = useState(false);
 
 	useEffect(() => {
 		if (!selectedDate) setSelectedDate(new Date());
@@ -47,13 +49,17 @@ const AllTrack = () => {
 			const date = String(selectedDate.getDate()).padStart(2, '0');
 			const resFormat = `${year}-${month}-${date}T00:00:00.000Z`;
 
+			setHistoryFoods([]);
+			setIsFetching(true);
 			axios.post('/track/history', { date: resFormat }, config)
 				.then((res) => {
 					if (res.status === 200 && res.data) {
 						setHistoryFoods(res.data.body.tracking.food);
 						setNutritionTotal(res.data.body.result);
 					}
-				})
+				}).finally(() => {
+					setIsFetching(false);
+				});
 		}
 	}, [selectedDate, token]);
 
@@ -146,6 +152,12 @@ const AllTrack = () => {
 					<h2 className="text-2xl text-navy font-semibold">Riwayat Makanan</h2>
 				</div>
 				<div>
+					{isFetching &&
+						[...Array(3)].map((_, i) => {
+							return (
+								<PlaceholderCardFoodHistory key={i} />
+							);
+						})}
 					{historyFoods.map((x, index) => {
 						return <CardFoodHistory
 							key={index}
