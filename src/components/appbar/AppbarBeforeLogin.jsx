@@ -18,7 +18,9 @@ const AppbarBeforeLogin = () => {
 							<Link to={'/auth/signin'}>
 								<ButtonLogin />
 							</Link>
-							<ButtonSignup />
+							<Link to={'/auth/signup'}>
+								<ButtonSignup />
+							</Link>
 						</div>
 
 						<button onClick={() => setNavbarOpen(!navbarOpen)}
@@ -63,10 +65,10 @@ const AppbarBeforeLogin = () => {
 							</li>
 							<li>
 								<div className="md:ms-2 pt-2 hidden sm:flex flex-row gap-2">
-									<Link to={'/auth/signin'}>
+									<Link to={'/auth/signin'} onClick={() => setNavbarOpen(!navbarOpen)}>
 										<ButtonLogin />
 									</Link>
-									<Link to={'/auth/signup'}>
+									<Link to={'/auth/signup'} onClick={() => setNavbarOpen(!navbarOpen)}>
 										<ButtonSignup />
 									</Link>
 								</div>

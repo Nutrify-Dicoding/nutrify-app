@@ -9,9 +9,13 @@ import AllTrack from './pages/AllTrack';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import Advice from './pages/Advice';
-import LoginExample from './pages/LoginExample';
-import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+import NotFound from './pages/NotFound';
+<<<<<<< HEAD
+import Login from './pages/Login';
+=======
+import SignUp from './pages/SignUp';
+>>>>>>> 6d48cc7835fc65a6fb7d7f4c45c196e7864e615e
 
 function App() {
 	const auth = useSelector((state) => state.auth);
@@ -27,7 +31,8 @@ function App() {
 					<Route path="/alltrack" element={<AllTrack />} />
 					<Route path="/profile" element={<Profile />} />
 					<Route path="/profile/edit" element={<EditProfile />} />
-					<Route path="/auth/signin" element={<LoginExample />} />
+					<Route path="/auth/signin" element={<Login />} />
+					<Route path="/auth/signup" element={<SignUp />} />
 					<Route path="/foods/:food_id" element={<FoodDetail />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/advice" element={<Advice />} />
