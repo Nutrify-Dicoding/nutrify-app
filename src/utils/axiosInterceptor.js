@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify';
 
 const errorInterceptor = (error, { navigate }) => {
-    if (!error.response) return;
-    if (error.response.status === 401) {
-        toast.error(error.response.data.message ?? "Authorization required!", { 'position': 'bottom-right' });
+    if (!error || !error.response) return;
+    if (error.response.status === 401 || error.response.status === 500 && error.response.data.message === "jwt malformed") {
+        toast.error("Authorization required!", { 'position': 'bottom-right' });
         if (navigate) navigate('/auth/signin');
     } else if (error.response.status === 400) {
         toast.error(error.response.data.message ?? "Bad request!", { 'position': 'bottom-right' });
@@ -11,9 +11,8 @@ const errorInterceptor = (error, { navigate }) => {
         return Promise.reject(error);
     } else {
         toast.error(error.response.data.message ?? "Something went wrong!", { 'position': 'bottom-right' });
-        console.log(error);
     }
-    return Promise.reject(error);
+    return Promise.reject();
 };
 
 const responseInterceptor = (response) => {
