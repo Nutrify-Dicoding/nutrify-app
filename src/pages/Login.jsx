@@ -46,7 +46,7 @@ const Login = () => {
 	return (
 		<>
 			<div style={{ backgroundImage: `url(${background})` }} className="bg-cover bg-center h-screen w-full grid place-items-center">
-				<div className="w-[58%] lg:w-[68%] tab:w-[78%] flex sm:flex-col bg-white/10 backdrop-blur-[10px] rounded-2xl overflow-hidden">
+				<div className="w-[58%] lg:w-[68%] tab:w-[78%] flex sm:flex-col bg-white/10 backdrop-blur-[5px] rounded-2xl overflow-hidden">
 					<div className="w-[48.6%] sm:w-full h-[400px] sm:h-[185px] aspect-square">
 						<img src={login1} alt="background" className="w-full h-full object-cover" />
 					</div>
