@@ -11,11 +11,7 @@ import EditProfile from './pages/EditProfile';
 import Advice from './pages/Advice';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
-<<<<<<< HEAD
-import Login from './pages/Login';
-=======
 import SignUp from './pages/SignUp';
->>>>>>> 6d48cc7835fc65a6fb7d7f4c45c196e7864e615e
 
 function App() {
 	const auth = useSelector((state) => state.auth);
@@ -35,6 +31,7 @@ function App() {
 					<Route path="/auth/signup" element={<SignUp />} />
 					<Route path="/foods/:food_id" element={<FoodDetail />} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/login" element={<SignUp />} />
 					<Route path="/advice" element={<Advice />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
