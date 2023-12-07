@@ -18,7 +18,7 @@ const Recommendation = () => {
 			},
 		};
 		axios.get('/foods', config).then((res) => {
-			if(res.status === 200) setFoods(res.data.food)
+			if (res.status === 200) setFoods(res.data.food)
 		}).finally(() => {
 			setIsFetching(false);
 		});
@@ -29,7 +29,7 @@ const Recommendation = () => {
 				Makanan Terpopuler
 			</p>
 			<div className="grid mt-8 sm:grid-cols-1 tab:grid-cols-3 grid-cols-4 gap-5 mb-12">
-				{foods.map((item, index) => {
+				{foods.slice(0, 4).map((item, index) => {
 					return <CardFood key={index} id={item._id} name={item.name} description={item.desc} fat={item.fat} calorie={item.cal} protein={item.protein} carbohydrate={item.carb} image={item.image.includes('http') ? item.image : 'https://picsum.photos/265/150'} />;
 				})}
 

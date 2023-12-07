@@ -36,11 +36,11 @@ const AppbarAfterLogin = () => {
 					<div className="flex flex-row gap-5 items-center ">
 						<Link to={'/'} className="flex cursor-pointer text-base">
 							<span className='sm:hidden'>Home</span>
-							<img className='hidden sm:block' src="/public/icons/home.svg" />
+							<img className='hidden sm:block' src="/icons/home.svg" />
 						</Link>
 						<Link to={'/track'} className="flex cursor-pointer text-base">
 							<span className='sm:hidden'>Tracking</span>
-							<img className='hidden sm:block' src="/public/icons/calendar-check.svg" />
+							<img className='hidden sm:block' src="/icons/calendar-check.svg" />
 						</Link>
 						<div className="flex items-center gap-2">
 							<button

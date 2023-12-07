@@ -97,7 +97,7 @@ const FoodDetail = () => {
 				<div className="2xl:mx-auto">
 					<div className="w-full flex tab:flex-col">
 						<div className="w-[50%] lg:w-[45%] tab:w-full tab:h-[400px] aspect-video">
-							<img className="h-full w-full object-cover" src="https://i.ibb.co/8s9c629/Foto-Makanan.png" alt="food" />
+							<img className="h-full w-full object-cover" src={foodDetail.image} alt="food" />
 						</div>
 						<div className="w-[50%] lg:w-[55%] tab:w-full pr-[6.25%] tab:px-[6.25%] pl-16 sm:px-[6.25%] md:py-5">
 							<Breadcrumb items={breadcrumbItems} />
