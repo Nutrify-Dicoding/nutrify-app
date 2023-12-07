@@ -52,27 +52,27 @@ const Profile = () => {
 				<div className="grid grid-cols-3 sm:grid-cols-1">
 					<div>
 						<div className="font-medium mt-5">Email</div>
-						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5' : ''}`}>{user.email}</div>
+						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5 text-transparent' : ''}`}>{user.email}</div>
 					</div>
 					<div>
 						<div className="font-medium mt-5">Jenis Kelamin</div>
-						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5' : ''}`}>{user.gender}</div>
+						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5 text-transparent' : ''}`}>{user.gender}</div>
 					</div>
 					<div>
 						<div className="font-medium mt-5">Umur</div>
-						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5' : ''}`}>{user.umur} Tahun</div>
+						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5 text-transparent' : ''}`}>{user.umur} Tahun</div>
 					</div>
 					<div>
 						<div className="font-medium mt-5">Berat Badan</div>
-						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5' : ''}`}>{user.berat} Kilogram</div>
+						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5 text-transparent' : ''}`}>{user.berat} Kilogram</div>
 					</div>
 					<div>
 						<div className="font-medium mt-5">Tinggi Badan</div>
-						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5' : ''}`}>{user.tinggi} Centimeter</div>
+						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5 text-transparent' : ''}`}>{user.tinggi} Centimeter</div>
 					</div>
 					<div>
 						<div className="font-medium mt-5">Tingkat Kegiatan</div>
-						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5' : ''}`}>{user.levelAktivitas ? user.levelAktivitas.ket : ''}</div>
+						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5 text-transparent' : ''}`}>{user.levelAktivitas ? user.levelAktivitas.ket : ''}</div>
 					</div>
 				</div>
 			</div>

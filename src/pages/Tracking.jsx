@@ -53,11 +53,11 @@ const Tracking = () => {
 					</div>
 				</div>
 			</div>
-			<div className={`w-full mt-5 grid grid-cols-4 gap-5 lg:grid-cols-2 sm:grid-cols-1`}>
+			<div className={`w-full mt-5 grid grid-cols-4 gap-5 lg:grid-cols-2 sm:grid-cols-1 ${foodsSelectedToday.length ? 'block' : 'hidden'}`}>
 				<CardNutritionTrack
 					name={'Lemak'}
 					icon={'lemak-icon.svg'}
-					percentase={parseInt( nutritionTotal.totFat/userInfo.fatNeeded * 100) + '%'}
+					percentase={parseInt(nutritionTotal.totFat / userInfo.fatNeeded * 100) + '%'}
 					value={nutritionTotal.totFat}
 					target={parseInt(userInfo.fatNeeded)}
 					text={'Capaian menjadi'}
@@ -65,7 +65,7 @@ const Tracking = () => {
 				<CardNutritionTrack
 					name={'Kalori'}
 					icon={'kalori-icon.svg'}
-					percentase={parseInt( nutritionTotal.totCal/userInfo.caloriNeeded * 100) + '%'}
+					percentase={parseInt(nutritionTotal.totCal / userInfo.caloriNeeded * 100) + '%'}
 					value={nutritionTotal.totCal}
 					target={parseInt(userInfo.caloriNeeded)}
 					text={'Capaian menjadi'}
@@ -73,7 +73,7 @@ const Tracking = () => {
 				<CardNutritionTrack
 					name={'Protein'}
 					icon={'protein-icon.svg'}
-					percentase={parseInt( nutritionTotal.totProtein/userInfo.proteinNeeded * 100) + '%'}
+					percentase={parseInt(nutritionTotal.totProtein / userInfo.proteinNeeded * 100) + '%'}
 					value={nutritionTotal.totProtein}
 					target={parseInt(userInfo.proteinNeeded)}
 					text={'Capaian menjadi'}
@@ -81,7 +81,7 @@ const Tracking = () => {
 				<CardNutritionTrack
 					name={'Karbohidrat'}
 					icon={'carbo-icon.svg'}
-					percentase={parseInt( nutritionTotal.totCarb/userInfo.carboNeeded * 100) + '%'}
+					percentase={parseInt(nutritionTotal.totCarb / userInfo.carboNeeded * 100) + '%'}
 					value={nutritionTotal.totCarb}
 					target={parseInt(userInfo.carboNeeded)}
 					text={'Capaian menjadi'}
@@ -90,6 +90,11 @@ const Tracking = () => {
 			<p className="text-navy font-bold mt-8 text-2xl">
 				Makanan dipilih hari ini
 			</p>
+			<div className={`text-center text-darknavy mt-7 mb-10 ${foodsSelectedToday.length ? 'hidden' : 'block'}`}>
+				<p className="text-md font-semibold">
+					Tidak ada makanan yang dipilih hari ini!
+				</p>
+			</div>
 			<div>
 				{isFetching &&
 					[...Array(3)].map((_, i) => {

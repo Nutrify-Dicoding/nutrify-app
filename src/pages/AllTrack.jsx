@@ -100,7 +100,7 @@ const AllTrack = () => {
 							<img className="w-[18px] h-[18px] mr-[10px]" src="/icons/calendar.svg" alt="Icon Calendar" />
 							<p className="text-white-500 font-medium">{formatDate(selectedDate)}</p>
 						</div>
-						<div className={`bg-white absolute ms-[-150px] z-10 mt-3 border shadow-lg ${selectDate ? 'block' : 'hidden'}`}>
+						<div className={`bg-white absolute ms-[-150px] z-[1] mt-3 border shadow-lg ${selectDate ? 'block' : 'hidden'}`}>
 							<DayPicker
 								locale={id}
 								mode="single" selected={selectedDate} onDayClick={(date) => setSelectedDate(date)}
@@ -112,7 +112,7 @@ const AllTrack = () => {
 						</div>
 					</div>
 				</div>
-				<div className="grid grid-cols-4 gap-5 lg:grid-cols-2 sm:grid-cols-1">
+				<div className={`grid grid-cols-4 gap-5 lg:grid-cols-2 sm:grid-cols-1 ${historyFoods.length ? 'block' : 'hidden'}`}>
 					<CardNutritionTrack
 						name={'Lemak'}
 						icon={'lemak-icon.svg'}
@@ -150,6 +150,11 @@ const AllTrack = () => {
 			<section className="px-[6.25%] mt-8">
 				<div className="mb-5">
 					<h2 className="text-2xl text-navy font-semibold">Riwayat Makanan</h2>
+				</div>
+				<div className={`text-center text-darknavy mb-10 ${historyFoods.length ? 'hidden' : 'block'}`}>
+					<p className="text-md font-semibold">
+						No Tracking Found!
+					</p>
 				</div>
 				<div>
 					{isFetching &&
