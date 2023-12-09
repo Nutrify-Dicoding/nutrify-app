@@ -37,7 +37,7 @@ const LandingPage = () => {
 						<p className="text-navy leading-8 mt-8 mb-8 lg:leading-7">
 							Temukan rahasia kesehatan melalui informasi gizi akurat dan inspirasi untuk perubahan positif dalam hidup Anda.
 						</p>
-						<Link to="/auth/signin">
+						<Link to="/login">
 							<Button buttonText={'Mulai Sekarang'} />
 						</Link>
 					</div>
@@ -161,7 +161,7 @@ const LandingPage = () => {
 					))}
 				</div>
 				<div className="w-full flex justify-center">
-					<Link to={'/home'}>
+					<Link to={'/login'}>
 						<Button buttonText={'Selengkapnya'} />
 					</Link>
 				</div>
@@ -172,7 +172,7 @@ const LandingPage = () => {
 						<h2 className="text-4xl font-semibold mb-2 sm:text-mobile-4xl">Ayo Daftar Sekarang Juga!</h2>
 						<p className="text-md sm:text-base">Jangan Lewatkan Kesempatan Untuk Meningkatkan Kesehatan dan Gaya Hidup Anda.</p>
 					</div>
-					<Link to="/auth/signup">
+					<Link to="/signup">
 						<Button buttonText={'Daftar Sekarang'}></Button>
 					</Link>
 				</div>

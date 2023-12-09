@@ -43,10 +43,11 @@ const EditProfile = () => {
 			"gender": user.gender,
 			"tinggi": user.tinggi,
 			"berat": user.berat,
-			"levelAktivitas": user.levAktivitas,
+			"levelAktivitas": user.levelActivity,
 			"umur": user.umur,
 		}
-		console.log(user)
+		// console.log(formData)
+		// console.log(user)
 		axios.put('/profile', formData, config)
 			.then((res) => {
 				if (res.status === 200 && res.data) {
@@ -56,10 +57,10 @@ const EditProfile = () => {
 				}
 			})
 	}
-	const setlevAktivitas = (choice) => {
+	const setlevelActivity = (choice) => {
 		setUser({
 			...user,
-			levAktivitas: choice.target.value,
+			levelActivity: choice.target.value,
 		});
 	}
 
@@ -96,7 +97,7 @@ const EditProfile = () => {
 					</div>
 					<div className="pe-12 sm:pe-0">
 						<div className="font-medium mt-5">Tingkat Kegiatan</div>
-						<select onChange={(choice) => setlevAktivitas(choice)} name="gender" className='p-3 w-full bg-white-100 rounded focus:outline-white-400'>
+						<select value={user.levelActivity||1} onChange={(choice) => setlevelActivity(choice)} name="gender" className='p-3 w-full bg-white-100 rounded focus:outline-white-400'>
 							<option value="1">sangat ringan (0 x olahraga / minggu)</option>
 							<option value="2">ringan (1-3 x olahraga / minggu)</option>
 							<option value="3">sedang (3-5 x olahraga / minggu)</option>

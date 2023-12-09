@@ -77,7 +77,7 @@ const Login = () => {
 						</form>
 						<p className="mt-3 text-xs text-white text-center">
 							Belum punya akun?{' '}
-							<Link to="/auth/signup" className="text-[#FB8500] font-bold">
+							<Link to="/signup" className="text-[#FB8500] font-bold">
 								Register
 							</Link>
 						</p>

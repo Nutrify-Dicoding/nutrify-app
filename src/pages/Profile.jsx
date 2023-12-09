@@ -72,7 +72,7 @@ const Profile = () => {
 					</div>
 					<div>
 						<div className="font-medium mt-5">Tingkat Kegiatan</div>
-						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5 text-transparent' : ''}`}>{user.levelAktivitas ? user.levelAktivitas.ket : ''}</div>
+						<div className={`text-sm ${isFetching ? 'animate-pulse bg-white-400 h-6 rounded-lg me-5 text-transparent' : ''}`}>{user.levelActivity ? user.levelActivity : ''}</div>
 					</div>
 				</div>
 			</div>

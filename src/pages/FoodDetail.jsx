@@ -40,9 +40,9 @@ const FoodDetail = () => {
 						{ label: response1.data.name, url: '#' },
 					])
 				}
-				if (response2.status === 201 && response1.status === 200 && response2.data) {
+				if (response2.status === 200 && response1.status === 200 && response2.data) {
 					const food_id = response1.data._id
-					console.log(response2.data, 'response2')
+					// console.log(response2.data, 'response2')
 					if (response2.data.body.filter((favorite) => favorite.food._id === food_id).length > 0) {
 						const favorite = response2.data.body.filter((favorite) => favorite.food._id === food_id)[0]
 						setFavoriteID(favorite._id)
@@ -51,7 +51,11 @@ const FoodDetail = () => {
 				}
 			}))
 			.catch((err) => {
-				console.log(err);
+				if (axios.isAxiosError(err) && err.response && err.response.status === 404) {
+					navigate('/404')
+				} else {
+					console.log(err);
+				}
 			})
 
 	}, [food_id, dispatch, navigate, token]);
@@ -73,7 +77,7 @@ const FoodDetail = () => {
 			.then((res) => {
 				if (res.status === 200 && res.data) {
 					setFavorited(!favorited)
-					if(res.data.body.favorite){
+					if (res.data.body.favorite) {
 						setFavoriteID(res.data.body.favorite)
 					}
 				}

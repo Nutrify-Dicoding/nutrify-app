@@ -15,7 +15,7 @@ const SignUp = () => {
 		umur: '',
 		password: '',
 		confirm_password: '',
-		levAktivitas: 1,
+		levelActivity: 1,
 	});
 	const handleChange = (e) => {
 		setFormData({
@@ -29,10 +29,10 @@ const SignUp = () => {
 			gender: choice.target.value,
 		});
 	};
-	const setlevAktivitas = (choice) => {
+	const setlevelActivity = (choice) => {
 		setFormData({
 			...formData,
-			levAktivitas: choice.target.value,
+			levelActivity: choice.target.value,
 		});
 	};
 	const handleSubmit = async (e) => {
@@ -53,13 +53,14 @@ const SignUp = () => {
 			toast.error('Password and confirm password do not match!', { position: 'bottom-right' });
 			return;
 		}
-
+		// eslint-disable-next-line no-unused-vars
+		const { confirm_password, ...formDataWithoutConfirmPassword } = formData;
 		axios
-			.post(`/signup`, formData)
+			.post(`/signup`, formDataWithoutConfirmPassword)
 			.then((res) => {
-				if (res.status === 200) {
+				if (res.status === 201) {
 					toast.success(res.data.message, { position: 'bottom-right' });
-					navigate('/auth/signin');
+					navigate('/login');
 				} else {
 					toast.error(res.data.message ?? 'Something went wrong', { position: 'bottom-right' });
 				}
@@ -146,7 +147,7 @@ const SignUp = () => {
 										className="block w-full rounded-md h-11 ps-3 placeholder-[#002140] text-sm"
 									>
 										<option value="pria">Pria</option>
-										<option value="perempuan">Perempuan</option>
+										<option value="wanita">Wanita</option>
 									</select>
 								</div>
 								<div>
@@ -154,7 +155,7 @@ const SignUp = () => {
 										Tingkat Kegiatan
 									</label>
 									<select
-										onChange={(choice) => setlevAktivitas(choice)}
+										onChange={(choice) => setlevelActivity(choice)}
 										name="gender"
 										className="block w-full rounded-md h-11 ps-3 placeholder-[#002140] text-sm"
 									>
@@ -215,7 +216,7 @@ const SignUp = () => {
 						</form>
 						<p className="mt-4 text-xs text-white text-center">
 							Sudah punya akun?{' '}
-							<Link to="/auth/signin" className="text-[#FB8500] font-bold">
+							<Link to="/login" className="text-[#FB8500] font-bold">
 								Login
 							</Link>
 						</p>

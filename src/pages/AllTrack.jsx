@@ -53,7 +53,9 @@ const AllTrack = () => {
 			setIsFetching(true);
 			axios.post('/track/history', { date: resFormat }, config)
 				.then((res) => {
-					if (res.status === 200 && res.data) {
+					// console.log(res.data.body.tracking)
+					if (res.status === 200 && res.data.body.tracking.food) {
+						// console.log(88887)
 						setHistoryFoods(res.data.body.tracking.food);
 						setNutritionTotal(res.data.body.result);
 					}

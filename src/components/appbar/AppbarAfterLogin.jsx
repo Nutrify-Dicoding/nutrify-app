@@ -10,11 +10,11 @@ const AppbarAfterLogin = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	useEffect(() => {
-		if (!isAuthenticated) navigate('/auth/signin');
+		if (!isAuthenticated) navigate('/login');
 	}, [isAuthenticated, navigate]);
 	const logout = () => {
 		dispatch(clearAuth());
-		navigate('/auth/signin');
+		navigate('/login');
 	};
 	const searchQuery = useSelector((state) => state.foodsFilter.byName);
 	useEffect(() => {

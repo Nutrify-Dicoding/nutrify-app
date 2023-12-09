@@ -22,8 +22,8 @@ const Favorite = () => {
         setIsFetching(true);
         axios.get('/favorite', config)
             .then((res) => {
-                console.log(res.data)
-                if (res.status === 201) setFavorite(res.data.body)
+                // console.log(res.data)
+                if (res.status === 200) setFavorite(res.data.body)
             }).finally(() => {
                 setIsFetching(false);
             })

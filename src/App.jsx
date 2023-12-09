@@ -28,8 +28,6 @@ function App() {
 					<Route path="/alltrack" element={<AllTrack />} />
 					<Route path="/profile" element={<Profile />} />
 					<Route path="/profile/edit" element={<EditProfile />} />
-					<Route path="/auth/signin" element={<Login />} />
-					<Route path="/auth/signup" element={<SignUp />} />
 					<Route path="/foods/:food_id" element={<FoodDetail />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/signup" element={<SignUp />} />

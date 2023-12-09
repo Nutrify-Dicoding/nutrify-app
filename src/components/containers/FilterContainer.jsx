@@ -34,7 +34,7 @@ const FilterContainer = () => {
 		}))
 	}
 	return (
-		<div className="flex w-full md:hidden flex-row overflow-hidden gap-[10px] mt-8">
+		<div className="flex w-full flex-row overflow-auto gap-[10px] mt-8">
 			{categories.map((category, i) => {
 				return (
 					<div key={i} onClick={() => selectCategory(category._id)}>

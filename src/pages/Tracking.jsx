@@ -29,7 +29,7 @@ const Tracking = () => {
 			},
 		};
 		axios.get('/track/today', config).then((res) => {
-			if (res.status === 200 && res.data) {
+			if (res.status === 200 && res.data.body.tracking) {
 				setFoodsSelectedToday(res.data.body.tracking.food);
 				setNutritionTotal(res.data.body.result);
 			}
