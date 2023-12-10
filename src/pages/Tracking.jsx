@@ -19,10 +19,6 @@ const Tracking = () => {
 	const [nutritionTotal, setNutritionTotal] = useState({});
 	const [isFetching, setIsFetching] = useState(true);
 	useEffect(() => {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		});
 		const config = {
 			headers: {
 				Authorization: `Bearer ${token}`,
@@ -39,7 +35,12 @@ const Tracking = () => {
 	}, [token, navigate, dispatch]);
 	return (
 		<section className="px-[6.25%] w-full tab:h-full tab:pt-[4rem] mt-[7.5rem] tab:mt-14 ">
-			<p className="text-2xl font-bold text-navy">Pilih Makanan</p>
+			<p className="text-2xl font-bold text-navy">
+				Pilih Makanan
+				<Link to={'/alltrack'}>
+					<button className='p-1 px-2 text-white text-md font-medium bg-orange rounded-md ms-4'>All Tracking</button>
+				</Link>
+			</p>
 			<CardFoodChosen />
 			<div className={selectedFood.food_id ? 'hidden' : ''}>
 				<div className="col-span-4 flex justify-center py-10 items-center">

@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const colourValue = (title, bodyValue) => {
 	if (title == 'Body Mass Index (BMI)') {
-		if (bodyValue < 20 || bodyValue > 40) {
-			return 'text-red';
+		if(bodyValue >= 18.5 && bodyValue <= 24.9){
+			return 'text-green';
 		}
-		return 'text-green';
+		return 'text-red';
 	} else if (title == 'Berat Badan Ideal') {
 		if (bodyValue < 25 || bodyValue > 45) {
 			return 'text-red';
@@ -29,10 +29,10 @@ const CardInfoBody = ({ icon, title, bodyText, bodyValue, advice }) => {
 					</div>
 					<div>
 						<p className="text-white-500">
-							Berat badan <span className={`${colourValue(title, bodyValue)} font-semibold`}>{bodyText}</span>, {advice}. Kunjungi
+							<span dangerouslySetInnerHTML={{ __html: advice.replace(bodyText, `<span class="${colourValue(title, bodyValue)} font-semibold">${bodyText}</span>`) }} /> Kunjungi
 							halaman
 							<span className="text-navy font-semibold">
-								<Link to={'/advice'}> berikut</Link>
+								<Link to={'/advice'}> berikut.</Link>
 							</span>
 						</p>
 					</div>

@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 
 const SignUp = () => {
 	const navigate = useNavigate();
+	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		email: '',
 		username: '',
@@ -55,6 +56,7 @@ const SignUp = () => {
 		}
 		// eslint-disable-next-line no-unused-vars
 		const { confirm_password, ...formDataWithoutConfirmPassword } = formData;
+		setLoading(true);
 		axios
 			.post(`/signup`, formDataWithoutConfirmPassword)
 			.then((res) => {
@@ -67,8 +69,7 @@ const SignUp = () => {
 			})
 			.catch((err) => {
 				toast.error(err.response.data.message ?? 'Something went wrong', { position: 'bottom-right' });
-			});
-		console.log(formData);
+			}).finally(() => setLoading(false));
 	};
 	return (
 		<>
@@ -209,7 +210,7 @@ const SignUp = () => {
 								</div>
 							</div>
 							<div className="mt-6 w-full flex justify-center">
-								<button className="text-[0.90rem] w-[16rem] sm:w-full bg-[#FB8500] px-2 py-1 h-11 rounded-md text-white">
+								<button className={`text-[0.90rem] w-[16rem] sm:w-full bg-[#FB8500] px-2 py-1 h-11 rounded-md text-white transition-all duration-75 ${loading?'cursor-wait bg-[#D66D00]':'cursor-pointer'}`}>
 									Register
 								</button>
 							</div>

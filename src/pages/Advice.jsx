@@ -1,7 +1,7 @@
 const Advice = () => {
 	return (
 		<>
-			<section className="px-[6.25%] flex mt-32 justify-between">
+			<section className="px-[6.25%] flex pt-24 justify-between">
 				<div className="w-[51%] tab:w-full ">
 					<h1 className="text-4xl sm:text-mobile-4xl font-bold text-navy">
 						Temukan Jalan Menuju <span className="text-orange">Gaya Hidup Sehat</span> dan{' '}

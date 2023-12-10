@@ -13,7 +13,7 @@ const CardTrackStats = ({ name, icon, percentase, needed, value, color }) => {
 			<div className="flex flex-row justify-between items-center h-3/4">
 				<p className={`font-bold text-4xl ${color}`}>{value}</p>
 				<p className="w-20 block text-sm  text-gray-400">
-					<span className="text-green font-bold">{needed < 0 ? -needed : needed}+</span> {needed > 0 ? 'Melebihi dari target' : 'lagi dari target'}
+					<span className="text-green font-bold">{needed < 0 ? -needed : needed}+</span> {needed < 0 ? 'Melebihi dari target' : 'lagi dari target'}
 				</p>
 			</div>
 		</div>

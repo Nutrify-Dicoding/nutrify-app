@@ -11,13 +11,15 @@ import background from '../assets/Background.png';
 const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
-		email: 'test7@gmail.com',
-		password: '123',
+		email: 'xyz@gmail.com',
+		password: 'xyz@gmail.com',
 	});
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+		setLoading(true);
 		axios.post(`/signin`, formData).then((response) => {
 			if (response.status === 200 && response.data.body.token) {
 				dispatch(
@@ -33,7 +35,7 @@ const Login = () => {
 			} else {
 				toast.error(response.data.message ?? 'Something went wrong', { position: 'bottom-right' });
 			}
-		});
+		}).finally(() => setLoading(false));
 	};
 
 	const handleChange = (e) => {
@@ -73,7 +75,7 @@ const Login = () => {
 								name="password"
 								onChange={handleChange}
 							/>
-							<button className="mt-5 text-xs w-full bg-[#FB8500] px-2 py-1 h-11 rounded-md text-white">Login</button>
+							<button className={`mt-5 text-xs w-full bg-[#FB8500] px-2 py-1 h-11 rounded-md text-white transition-all duration-75 ${loading?'cursor-wait bg-[#D66D00]':'cursor-pointer'}`}>Login</button>
 						</form>
 						<p className="mt-3 text-xs text-white text-center">
 							Belum punya akun?{' '}

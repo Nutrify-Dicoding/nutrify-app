@@ -4,8 +4,12 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 const TrackingContainer = () => {
-	const [nutritionTotal, setNutritionTotal] = useState({});
-	// const [isFetching, setIsFetching] = useState(true);
+	const [nutritionTotal, setNutritionTotal] = useState({
+		totCal: 0,
+		totCarb: 0,
+		totProtein: 0,
+		totFat: 0,
+	});
 	const userInfo = useSelector((state) => state.auth.userInfo);
 	const token = useSelector((state) => state.auth.token);
 	useEffect(() => {
@@ -17,6 +21,12 @@ const TrackingContainer = () => {
 		axios.get('/track/today', config).then((res) => {
 			if (res.status === 200 && res.data) {
 				setNutritionTotal(res.data.body.result);
+				// setNutritionTotal({
+				// 	totCal: 0,
+				// 	totCarb: 0,
+				// 	totProtein: 0,
+				// 	totFat: 10,
+				// })
 			}
 		})
 	}, [token]);
@@ -25,33 +35,33 @@ const TrackingContainer = () => {
 			<CardTrackStats
 				color={'text-yellow'}
 				icon={'lemak-icon.svg'}
-				percentase={parseInt( nutritionTotal.totFat/userInfo.fatNeeded * 100) + '%'}
-				needed={parseInt(userInfo.fatNeeded - nutritionTotal.totFat)}
-				value={nutritionTotal.totFat}
+				percentase={parseInt((nutritionTotal.totFat ?? 0) / userInfo.fatNeeded * 100) + '%'}
+				needed={parseInt(userInfo.fatNeeded - (nutritionTotal.totFat ?? 0))}
+				value={parseInt(userInfo.fatNeeded - (nutritionTotal.totFat ?? 0))}
 				name={'Lemak'}
 			/>
 			<CardTrackStats
 				color={'text-rose-400'}
 				icon={'kalori-icon.svg'}
-				percentase={parseInt( nutritionTotal.totCal/userInfo.caloriNeeded * 100) + '%'}
-				needed={parseInt(userInfo.caloriNeeded - nutritionTotal.totCal)}
-				value={nutritionTotal.totCal}
+				percentase={parseInt((nutritionTotal.totCal ?? 0) / userInfo.caloriNeeded * 100) + '%'}
+				needed={parseInt(userInfo.caloriNeeded - (nutritionTotal.totCal ?? 0))}
+				value={parseInt(userInfo.caloriNeeded - (nutritionTotal.totCal ?? 0))}
 				name={'Kalori'}
 			/>
 			<CardTrackStats
 				color={'text-cyan-900'}
 				icon={'protein-icon.svg'}
-				percentase={parseInt( nutritionTotal.totProtein/userInfo.proteinNeeded * 100) + '%'}
-				needed={parseInt(userInfo.proteinNeeded - nutritionTotal.totProtein)}
-				value={nutritionTotal.totProtein}
+				percentase={parseInt((nutritionTotal.totProtein ?? 0) / userInfo.proteinNeeded * 100) + '%'}
+				needed={parseInt(userInfo.proteinNeeded - (nutritionTotal.totProtein ?? 0))}
+				value={parseInt(userInfo.proteinNeeded - (nutritionTotal.totProtein ?? 0))}
 				name={'Protein'}
 			/>
 			<CardTrackStats
 				color={'text-orange'}
 				icon={'carbo-icon.svg'}
-				percentase={parseInt( nutritionTotal.totCarb/userInfo.carboNeeded * 100) + '%'}
-				needed={parseInt(userInfo.carboNeeded - nutritionTotal.totCarb)}
-				value={nutritionTotal.totCarb}
+				percentase={parseInt((nutritionTotal.totCarb ?? 0) / userInfo.carboNeeded * 100) + '%'}
+				needed={parseInt(userInfo.carboNeeded - (nutritionTotal.totCarb ?? 0))}
+				value={parseInt(userInfo.carboNeeded - (nutritionTotal.totCarb ?? 0))}
 				name={'Karbohidrat'}
 			/>
 		</div>

@@ -45,7 +45,7 @@ const ListFoodContainer = () => {
 			});
 	}, [foodsFilter, token]);
 	return (
-		<div className="w-full grid grid-cols-4 gap-5 mt-10 tab:grid-cols-3 md:grid-cols-2" id='list-food'>
+		<div className="w-full grid grid-cols-4 gap-5 mt-10 tab:grid-cols-3 md:grid-cols-2 sm:grid-cols-1" id='list-food'>
 			{foods.map((food) => {
 				return <CardFood key={food._id} id={food._id} name={food.name} description={food.desc} fat={food.fat} calorie={food.cal} protein={food.protein} carbohydrate={food.carb} image={food.image.includes('http') ? food.image : 'https://picsum.photos/265/150'} />;
 			})}

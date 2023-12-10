@@ -10,23 +10,6 @@ import { id } from 'date-fns/locale';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 
-const dataBodyUser = [
-	{
-		icon: 'bmi.svg',
-		title: 'Body Mass Index (BMI)',
-		bodyText: 'Underweight',
-		advice: 'memerlukan peningkatan berat badan untuk mencapai rentang yang sehat',
-		bodyValue: 20,
-	},
-	{
-		icon: 'berat-badan.svg',
-		title: 'Berat Badan Ideal',
-		bodyText: 'Underweight',
-		advice: 'memerlukan peningkatan berat badan untuk mencapai rentang yang sehat',
-		bodyValue: 20,
-	},
-];
-
 const AllTrack = () => {
 	const token = useSelector((state) => state.auth.token)
 	const [historyFoods, setHistoryFoods] = useState([]);
@@ -35,23 +18,74 @@ const AllTrack = () => {
 	const [nutritionTotal, setNutritionTotal] = useState({});
 	const userInfo = useSelector((state) => state.auth.userInfo);
 	const [isFetching, setIsFetching] = useState(false);
+	const [dataBodyUser, setDataBodyUser] = useState([
+		// {
+		// 	icon: 'bmi.svg',
+		// 	title: 'Body Mass Index (BMI)',
+		// 	bodyText: 'Underweight',
+		// 	advice: 'memerlukan peningkatan berat badan untuk mencapai rentang yang sehat',
+		// 	bodyValue: 20,
+		// },
+		// {
+		// 	icon: 'berat-badan.svg',
+		// 	title: 'Berat Badan Ideal',
+		// 	bodyText: 'Underweight',
+		// 	advice: 'memerlukan peningkatan berat badan untuk mencapai rentang yang sehat',
+		// 	bodyValue: 20,
+		// },
+	]);
 
 	useEffect(() => {
+		const config = {
+			headers: {
+				'Authorization': `Bearer ${token}`,
+			},
+		};
+
+		axios.get('/profile', config)
+			.then((res) => {
+				console.log(res.data.profile)
+				if (res.status == 200) {
+					// set Body Mass Index (BMI)
+					let bmi = res.data.profile.berat / ((res.data.profile.tinggi/100) * (res.data.profile.tinggi/100));
+
+					const data_bmi = {}
+					data_bmi.icon = 'bmi.svg'
+					data_bmi.title = 'Body Mass Index (BMI)'
+					data_bmi.bodyText = res.data.profile.status
+					data_bmi.bodyValue = parseInt(bmi)
+					if(bmi < 18.5){
+						data_bmi.advice = `Status BMI anda ${data_bmi.bodyText}, memerlukan peningkatan asupan nutrisi untuk mencapai rentang yang sehat.`
+					}else if(bmi >= 18.5 && bmi <= 24.9){
+						data_bmi.advice = `Status BMI anda ${data_bmi.bodyText}, terus pertahankan asupan nutrisi anda untuk tetap berada pada rentang yang sehat.`
+					}else{
+						data_bmi.advice = `Status BMI anda ${data_bmi.bodyText}, memerlukan penyesuaian asupan nutrisi untuk mencapai rentang yang sehat.`
+					}
+					
+					// set Berat Badan Ideal
+					const adjustmentPercentage = res.data.profile.jenisKelamin === 'pria' ? 0.1 : 0.15;
+					const bbi = (res.data.profile.tinggi - 100) - (res.data.profile.tinggi - 100) * adjustmentPercentage;
+					
+					const data_bbi = {}
+					data_bbi.icon = 'berat-badan.svg'
+					data_bbi.title = 'Berat Badan Ideal'
+					data_bbi.bodyText = res.data.profile.status
+					data_bbi.bodyValue = parseInt(bbi)
+					if(bbi >= 18.5 && bbi <= 24.9){
+						data_bbi.advice = `Selamat! Berat badan Anda sudah ideal. Tetap jaga pola makan sehat untuk kesehatan yang optimal.`
+					}else{
+						data_bbi.advice = `Untuk memperoleh berat badan ideal anda harus memiliki nilai body mass index 18.5 sampai 24.9 ayo mulai pola hidup sehat.`
+					}
+					setDataBodyUser([data_bmi, data_bbi])
+				}
+			})
+		// 
+
 		if (!selectedDate) setSelectedDate(new Date());
 		if (selectedDate) {
-			const config = {
-				headers: {
-					'Authorization': `Bearer ${token}`,
-				},
-			};
-			const year = selectedDate.getFullYear();
-			const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
-			const date = String(selectedDate.getDate()).padStart(2, '0');
-			const resFormat = `${year}-${month}-${date}T00:00:00.000Z`;
-
 			setHistoryFoods([]);
 			setIsFetching(true);
-			axios.post('/track/history', { date: resFormat }, config)
+			axios.post('/track/history', { date: selectedDate.toLocaleDateString('fr-CA') }, config)
 				.then((res) => {
 					// console.log(res.data.body.tracking)
 					if (res.status === 200 && res.data.body.tracking.food) {

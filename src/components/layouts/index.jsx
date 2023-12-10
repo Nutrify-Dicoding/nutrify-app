@@ -16,6 +16,10 @@ const Layout = ({ children }) => {
 
 	useEffect(() => {
 		axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate }));
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
 	}, [navigate])
 	return (
 		<>

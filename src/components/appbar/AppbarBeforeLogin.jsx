@@ -48,12 +48,12 @@ const AppbarBeforeLogin = () => {
 								</Link>
 							</li>
 							<li>
-								<a
-									href="#"
+								<Link
+									to={'/advice'}
 									className="block py-2 px-3 p-0 text-black hover:text-orange rounded bg-transparent md:text-orange-700 md:dark:text-orange-500 hover:bg-gray-100"
 								>
-									About
-								</a>
+									Guide
+								</Link>
 							</li>
 							<li>
 								<a

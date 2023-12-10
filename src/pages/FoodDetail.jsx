@@ -20,10 +20,6 @@ const FoodDetail = () => {
 	const token = useSelector((state) => state.auth.token)
 	const user_id = useSelector((state) => state.auth.userInfo._id)
 	useEffect(() => {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		});
 		const config = {
 			headers: {
 				'Authorization': `Bearer ${token}`,

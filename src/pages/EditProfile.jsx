@@ -38,6 +38,7 @@ const EditProfile = () => {
 				'Authorization': `Bearer ${token}`,
 			},
 		};
+		console.log(user.levelActivity)
 		const formData = {
 			"username": user.username,
 			"gender": user.gender,

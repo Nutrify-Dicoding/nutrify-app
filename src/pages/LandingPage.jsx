@@ -1,8 +1,20 @@
+import { useEffect, useState } from 'react';
 import Button from '../components/buttons/Button';
 import CardFood from '../components/cards/CardFood';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import PlaceholderCardFood from '../components/placeholder/PlaceholderCardFood';
 
 const LandingPage = () => {
+	const [foods, setFoods] = useState([]);
+	const [isFetching, setIsFetching] = useState(true);
+	useEffect(() => {
+		axios.get('/foods')
+			.then((res) => {
+				if (res.status === 200) setFoods(res.data.food)
+			})
+			.finally(() => setIsFetching(false));
+	}, []);
 	return (
 		<>
 			<section className="px-[6.25%] w-full h-screen tab:h-full tab:pt-[4rem]">
@@ -148,7 +160,17 @@ const LandingPage = () => {
 					<p className="opacity-90 sm:leading-7">Temukan kelezatan nutrisi dalam setiap hidangan kami.</p>
 				</div>
 				<div className="grid my-10 sm:grid-cols-1 tab:grid-cols-3 md:grid-cols-2 grid-cols-4 gap-5">
-					{Array.from({ length: 4 }, (_, index) => (
+					{foods.slice(0, 4).map((item, index) => {
+						return <CardFood key={index} id={item._id} name={item.name} description={item.desc} fat={item.fat} calorie={item.cal} protein={item.protein} carbohydrate={item.carb} image={item.image.includes('http') ? item.image : 'https://picsum.photos/265/150'} />;
+					})}
+
+					{/* While the data is being retrieved */}
+					{isFetching && [...Array(4)].map((_, i) => {
+						return (
+							<PlaceholderCardFood key={i} />
+						);
+					})}
+					{/* {Array.from({ length: 4 }, (_, index) => (
 						<CardFood
 							key={index}
 							name="Nama Makanan"
@@ -158,7 +180,7 @@ const LandingPage = () => {
 							protein="80"
 							carbohydrate="100"
 						/>
-					))}
+					))} */}
 				</div>
 				<div className="w-full flex justify-center">
 					<Link to={'/login'}>

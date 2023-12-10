@@ -10,7 +10,7 @@ const Footer = () => {
 					<span className="w-[6px] h-[6px] bg-white rounded-full"></span>
 					<Link to="/favorite">Favorite</Link>
 					<span className="w-[6px] h-[6px] bg-white rounded-full"></span>
-					<a href="#">About Us</a>
+					<Link to={'/advice'}>Guide</Link>
 				</div>
 				<div className="flex flex-row items-center justify-center gap-3">
 					<a href="">

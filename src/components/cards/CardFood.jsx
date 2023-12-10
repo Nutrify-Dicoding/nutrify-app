@@ -7,7 +7,7 @@ const CardFood = ({ id, name, description, fat, calorie, protein, carbohydrate, 
 			<div className='h-full flex flex-col justify-between'>
 				<div>
 					<img
-						className="rounded-t-lg w-full max-h-[150px] sm:max-h-[120px] object-cover bg-slate-200 h-[150px]"
+						className="rounded-t-lg w-full max-h-[150px] sm:max-h-[150px] object-cover bg-slate-200 h-[150px]"
 						src={image || 'https://picsum.photos/265/150'}
 						alt={name}
 						loading="lazy"
