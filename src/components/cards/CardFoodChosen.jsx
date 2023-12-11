@@ -99,7 +99,7 @@ function CardFoodChosen() {
 				<NutritionWrap name="Protein" icon="icon-protein-no-bg.svg" value={selectedFood.protein * porsi} />
 				<NutritionWrap name="Karbohidrat" icon="icon-karbo-no-bg.svg" value={selectedFood.carb * porsi} />
 			</div>
-			<div className="flex flex-col gap-2 tab:gap-5 items-center tab:mt-4">
+			<div className="flex flex-col tab:flex-row gap-2 tab:gap-5 items-center tab:mt-4">
 				<div className="py-2 px-2 w-[100px] rounded-full bg-slate-200 flex flex-row items-center justify-between">
 					<button type="button" className="w-11 font-bold text-orange-100" onClick={() => hanldeMinPorsi()}>
 						-
