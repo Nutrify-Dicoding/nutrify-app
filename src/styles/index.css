@@ -6,4 +6,10 @@
 	html {
 		font-family: "Poppins", sans-serif;
 	}
+
+	body,
+	nav {
+		max-width: 1900px;
+		margin: auto;
+	}
 }
