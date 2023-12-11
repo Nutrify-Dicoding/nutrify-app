@@ -39,10 +39,10 @@ function CardFoodHistory({ data, portion }) {
                 </div>
             </div>
             <div className="w-[55%] tab:w-full tab:mt-2 grid grid-cols-4 gap-5 sm:gap-2 sm:mr-4">
-                <NutritionWrap name="Lemak" icon="icon-lemak-no-bg.svg" value={data ? data.fat * portion : ''} />
-                <NutritionWrap name="Kalori" icon="icon-calori-no-bg.svg" value={data ? data.cal * portion : ''} />
-                <NutritionWrap name="Protein" icon="icon-protein-no-bg.svg" value={data ? data.protein * portion : ''} />
-                <NutritionWrap name="Karbohidrat" icon="icon-karbo-no-bg.svg" value={data ? data.carb * portion : ''} />
+                <NutritionWrap name="Lemak" icon="icon-lemak-no-bg.svg" value={data ? (data.fat * portion).toFixed(2) : ''} />
+                <NutritionWrap name="Kalori" icon="icon-calori-no-bg.svg" value={data ? (data.cal * portion).toFixed(2) : ''} />
+                <NutritionWrap name="Protein" icon="icon-protein-no-bg.svg" value={data ? (data.protein * portion).toFixed(2) : ''} />
+                <NutritionWrap name="Karbohidrat" icon="icon-karbo-no-bg.svg" value={data ? (data.carb * portion).toFixed(2) : ''} />
             </div>
             <div className="w-32 h-9 rounded-full bg-slate-200 flex flex-row items-center justify-center tab:hidden">
                 <p>

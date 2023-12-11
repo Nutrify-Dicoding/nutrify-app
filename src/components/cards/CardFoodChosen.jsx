@@ -94,10 +94,10 @@ function CardFoodChosen() {
 				</div> */}
 			</div>
 			<div className="w-[55%] tab:w-full tab:mt-2 grid grid-cols-4 gap-5 sm:gap-2 sm:mr-4">
-				<NutritionWrap name="Lemak" icon="icon-lemak-no-bg.svg" value={selectedFood.fat * porsi} />
-				<NutritionWrap name="Kalori" icon="icon-calori-no-bg.svg" value={selectedFood.cal * porsi} />
-				<NutritionWrap name="Protein" icon="icon-protein-no-bg.svg" value={selectedFood.protein * porsi} />
-				<NutritionWrap name="Karbohidrat" icon="icon-karbo-no-bg.svg" value={selectedFood.carb * porsi} />
+				<NutritionWrap name="Lemak" icon="icon-lemak-no-bg.svg" value={(selectedFood.fat * porsi).toFixed(2)} />
+				<NutritionWrap name="Kalori" icon="icon-calori-no-bg.svg" value={(selectedFood.cal * porsi).toFixed(2)} />
+				<NutritionWrap name="Protein" icon="icon-protein-no-bg.svg" value={(selectedFood.protein * porsi).toFixed(2)} />
+				<NutritionWrap name="Karbohidrat" icon="icon-karbo-no-bg.svg" value={(selectedFood.carb * porsi).toFixed(2)} />
 			</div>
 			<div className="flex flex-col gap-2 tab:gap-5 items-center tab:mt-4">
 				<div className="py-2 px-2 w-[100px] rounded-full bg-slate-200 flex flex-row items-center justify-between">
