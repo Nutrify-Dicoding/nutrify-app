@@ -1,9 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./slices/authSlice";
-import { persistStore, persistReducer } from 'redux-persist'
-import foodsFilterReducer from "./slices/foodsFilterSlice";
-import selectedFoodSlice from "./slices/selectedFoodSlice";
-import storage from 'redux-persist/lib/storage'
+import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import authReducer from './slices/authSlice';
+import foodsFilterReducer from './slices/foodsFilterSlice';
+import selectedFoodSlice from './slices/selectedFoodSlice';
 
 const persistedAuthReducer = persistReducer({ key: 'auth', storage }, authReducer);
 const persistedSelectedFoodReducer = persistReducer({ key: 'selectedFood', storage }, selectedFoodSlice);
@@ -14,10 +14,9 @@ const store = configureStore({
         foodsFilter: foodsFilterReducer,
         selectedFood: persistedSelectedFoodReducer,
     },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: false,
-        }),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false,
+    }),
 });
 
 // Subscribe to store changes

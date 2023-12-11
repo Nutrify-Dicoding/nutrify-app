@@ -1,26 +1,25 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setFilter } from "../redux/slices/foodsFilterSlice";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setFilter } from '../redux/slices/foodsFilterSlice';
 
-const SearchInputBar = () => {
-    const [query, setQuery] = useState("");
+function SearchInputBar() {
+    const [query, setQuery] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleSearch = (e) => {
         setQuery(e.target.value);
-    }
+    };
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            if(window.location.pathname !== '/'){
-                navigate('/')
+            if (window.location.pathname !== '/') {
+                navigate('/');
             }
             dispatch(setFilter({
                 byName: query,
-            }))
+            }));
         }
     };
-
 
     return (
         <div className="relative block">
@@ -52,7 +51,7 @@ const SearchInputBar = () => {
                 onKeyDown={handleKeyDown}
             />
         </div>
-    )
+    );
 }
 
 export default SearchInputBar;
