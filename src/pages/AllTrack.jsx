@@ -29,7 +29,6 @@ function AllTrack() {
 		};
 
 		axios.get('/profile', config).then((res) => {
-			// console.log(res.data.profile);
 			if (res.status === 200) {
 				// set Body Mass Index (BMI)
 				const bmi = res.data.profile.berat / ((res.data.profile.tinggi / 100) * (res.data.profile.tinggi / 100));
@@ -48,16 +47,15 @@ function AllTrack() {
 				}
 
 				// set Berat Badan Ideal
-				const adjustmentPercentage = res.data.profile.jenisKelamin === 'pria' ? 0.1 : 0.15;
-				const bbi = res.data.profile.tinggi - 100 - (res.data.profile.tinggi - 100) * adjustmentPercentage;
+				const bbi = res.data.profile.bbi.value;
 				const beratBadan = res.data.profile.berat;
 
 				const dataBbi = {};
 				dataBbi.icon = 'berat-badan.svg';
 				dataBbi.title = 'Berat Badan Ideal';
-				dataBbi.bodyText = res.data.profile.status;
+				dataBbi.bodyText = res.data.profile.bbi.status;
 				dataBbi.bodyValue = parseInt(bbi);
-				if (beratBadan <= bbi - 1 && beratBadan >= bbi + 1) {
+				if (beratBadan >= bbi - 1 && beratBadan <= bbi + 1) {
 					dataBbi.advice = `Selamat! Berat badan Anda ${dataBbi.bodyText}. Tetap jaga pola makan sehat untuk kesehatan yang optimal.`;
 				} else {
 					dataBbi.advice = `Berat badan anda ${dataBbi.bodyText}. Capai berat badan ${bbi - 1} - ${bbi + 1} supaya berat badan anda ideal.`;
@@ -65,7 +63,6 @@ function AllTrack() {
 				setDataBodyUser([dataBmi, dataBbi]);
 			}
 		});
-		//
 
 		if (!selectedDate) setSelectedDate(new Date());
 		if (selectedDate) {
@@ -76,7 +73,6 @@ function AllTrack() {
 				.then((res) => {
 					// console.log(res.data.body.tracking)
 					if (res.status === 200 && res.data.body.tracking.food) {
-						// console.log(88887)
 						setHistoryFoods(res.data.body.tracking.food);
 						setNutritionTotal(res.data.body.result);
 					}
