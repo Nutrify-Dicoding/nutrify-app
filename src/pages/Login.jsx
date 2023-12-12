@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { setAuth } from '../redux/slices/authSlice';
+import { errorInterceptor } from '../utils/axiosInterceptor';
 
 function Login() {
 	const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function Login() {
 		e.preventDefault();
 
 		setLoading(true);
+		axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate }));
 		axios
 			.post('/signin', formData)
 			.then((response) => {
@@ -85,11 +87,14 @@ function Login() {
 						</button>
 					</form>
 					<p className="mt-3 text-xs text-white text-center">
-						Belum punya akun?{' '}
+						Belum punya akun?
+						{' '}
 						<Link to="/signup" className="text-[#FB8500] font-bold">
 							Register
-						</Link>{' '}
-						atau{' '}
+						</Link>
+						{' '}
+						atau
+						{' '}
 						<a href="mailto:fauziridho38@gmail.com" className="text-[#FB8500] font-bold">
 							Lupa Password
 						</a>
