@@ -17,6 +17,7 @@ module.exports = {
 				namedComponents: "function-declaration",
 			},
 		],
+		"no-tabs": "off",
 		"indent": "off",
 		"react/jsx-indent": "off",
 		"react/jsx-indent-props": "off",
