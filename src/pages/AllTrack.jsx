@@ -47,6 +47,7 @@ function AllTrack() {
 				}
 
 				// set Berat Badan Ideal
+				console.log(res.data.profile.bbi);
 				const bbi = res.data.profile.bbi.value;
 				const beratBadan = res.data.profile.berat;
 
@@ -58,7 +59,9 @@ function AllTrack() {
 				if (beratBadan >= bbi - 1 && beratBadan <= bbi + 1) {
 					dataBbi.advice = `Selamat! Berat badan Anda ${dataBbi.bodyText}. Tetap jaga pola makan sehat untuk kesehatan yang optimal.`;
 				} else {
-					dataBbi.advice = `Berat badan anda ${dataBbi.bodyText}. Capai berat badan ${bbi - 1} - ${bbi + 1} supaya berat badan anda ideal.`;
+					dataBbi.advice = `Berat badan anda ${dataBbi.bodyText} (${beratBadan}). Capai berat badan ${bbi - 1} - ${
+						bbi + 1
+					} supaya berat badan anda ideal.`;
 				}
 				setDataBodyUser([dataBmi, dataBbi]);
 			}
