@@ -42,7 +42,7 @@ function ListFoodContainer() {
 			});
 	}, [foodsFilter, token]);
 	return (
-		<div className="w-full grid grid-cols-4 gap-5 mt-10 tab:grid-cols-3 md:grid-cols-2" id="list-food">
+		<div className="w-full grid grid-cols-4 gap-5 sm:gap-3 mt-10 tab:grid-cols-3 md:grid-cols-2" id="list-food">
 			{foods.map((food) => (
 				<CardFood
 					key={food._id}

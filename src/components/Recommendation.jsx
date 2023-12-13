@@ -29,7 +29,7 @@ function Recommendation() {
 	return (
 		<div className="mt-12 mb-20">
 			<p className="font-semibold text-2xl sm:text-mobile-2xl text-navy">Makanan Terpopuler</p>
-			<div className="grid mt-8 sm:grid-cols-2 tab:grid-cols-3 grid-cols-4 gap-5 mb-12">
+			<div className="grid mt-8 sm:grid-cols-2 tab:grid-cols-3 grid-cols-4 gap-5 sm:gap-3 mb-12">
 				{foods.slice(0, 4).map((item) => (
 					<CardFood
 						key={item._id}

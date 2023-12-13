@@ -185,7 +185,7 @@ function LandingPage() {
 					</h2>
 					<p className="opacity-90 sm:leading-7">Temukan kelezatan nutrisi dalam setiap hidangan kami.</p>
 				</div>
-				<div className="grid my-10 tab:grid-cols-3 md:grid-cols-2 grid-cols-4 gap-5">
+				<div className="grid my-10 tab:grid-cols-3 md:grid-cols-2 grid-cols-4 gap-5 sm:gap-3">
 					{foods.slice(0, 4).map((item, index) => (
 						<CardFood
 							key={index}
