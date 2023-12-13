@@ -39,7 +39,6 @@ function EditProfile() {
                 Authorization: `Bearer ${token}`,
             },
         };
-        // console.log(user.levelActivity);
         const formData = {
             username: user.username,
             gender: user.gender,
@@ -48,8 +47,6 @@ function EditProfile() {
             levelAktivitas: user.levelActivity,
             umur: user.umur,
         };
-        // console.log(formData)
-        // console.log(user)
         axios.put('/profile', formData, config)
             .then((res) => {
                 if (res.status === 200 && res.data) {
@@ -73,12 +70,12 @@ function EditProfile() {
                 <div className="font-semibold border-b pb-2 text-xl">Edit Informasi Pribadi</div>
                 <div className="grid grid-cols-2 sm:grid-cols-1">
                     <div className="pe-12 sm:pe-0">
-                        <div className="font-medium mt-5">Email</div>
+                        <div className="font-medium mt-5">Nama Lengkap</div>
                         <input
-                            name="email"
+                            name="username"
                             className="p-3 w-full bg-white-100 rounded focus:outline-white-400"
                             type="text"
-                            value={user.email || ''}
+                            value={user.username || ''}
                             onChange={handleInputChange}
                         />
                     </div>

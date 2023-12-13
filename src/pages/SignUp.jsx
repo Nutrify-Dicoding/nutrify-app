@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-// import background from '../assets/Background.png';
+import { errorInterceptor } from '../utils/axiosInterceptor';
 
 function SignUp() {
     const navigate = useNavigate();
@@ -60,6 +60,7 @@ function SignUp() {
 
         const { confirm_password, ...formDataWithoutConfirmPassword } = formData;
         setLoading(true);
+        axios.interceptors.response.use(null, (err) => errorInterceptor(err, { navigate }));
         axios
             .post('/signup', formDataWithoutConfirmPassword)
             .then((res) => {
