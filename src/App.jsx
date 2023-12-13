@@ -9,7 +9,7 @@ import AllTrack from './pages/AllTrack';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import Advice from './pages/Advice';
-import ChangePassword from './pages/ChangePassword';
+import ChangePassword from './pages/changePassword';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import SignUp from './pages/SignUp';
