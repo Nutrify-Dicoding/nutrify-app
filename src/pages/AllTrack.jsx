@@ -125,7 +125,7 @@ function AllTrack() {
 			</section>
 			<section className="px-[6.25%] mt-8">
 				<div className="flex justify-between overflow-hidden max-h-10 mb-5">
-					<h2 className="text-2xl text-navy font-semibold">Nutrisi</h2>
+					<h2 className="text-2xl sm:text-mobile-2xl text-navy font-semibold">Nutrisi</h2>
 					<div>
 						<div className="flex items-center cursor-pointer" onClick={() => setSelectDate(!selectDate)}>
 							<img className="w-[18px] h-[18px] mr-[10px]" src="/icons/calendar.svg" alt="Icon Calendar" />
@@ -181,7 +181,7 @@ function AllTrack() {
 			</section>
 			<section className="px-[6.25%] mt-8">
 				<div className="mb-5">
-					<h2 className="text-2xl text-navy font-semibold">Riwayat Makanan</h2>
+					<h2 className="text-2xl sm:text-mobile-2xl text-navy font-semibold">Riwayat Makanan</h2>
 				</div>
 				<div className={`text-center text-darknavy mb-10 ${historyFoods.length ? 'hidden' : 'block'}`}>
 					<p className="text-md font-semibold">No Tracking Found!</p>
