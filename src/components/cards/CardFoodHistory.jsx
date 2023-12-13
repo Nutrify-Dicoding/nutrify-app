@@ -18,7 +18,7 @@ function CardFoodHistory({ data, portion }) {
 	const protein = data ? (data.protein * portion).toFixed(2).toString() : '';
 	const carbo = data ? (data.carb * portion).toFixed(2).toString() : '';
 	return (
-		<div className="flex justify-between items-center tab:flex-col w-full mt-5 border border-white-400/60 rounded-[10px] p-4 sm:p-2">
+		<div className="flex justify-between items-center tab:flex-col w-full mt-5 border border-white-400/60 rounded-[10px] p-4 sm:p-3">
 			<div className="w-[25%] 2lg:w-[27%] tab:flex tab:justify-between tab:items-center tab:w-full">
 				<div className="flex flex-row gap-5 sm:gap-3 items-center">
 					<img

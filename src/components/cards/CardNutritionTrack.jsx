@@ -8,7 +8,7 @@ function CardNutritionTrack({ name, icon, percentase, value, target, text }) {
 					<img src={`/icons/${icon}`} alt="" />
 					<p className="text-md font-medium">{name}</p>
 				</div>
-				<p className="font-bold text-lg">{percentase}</p>
+				<p className="font-bold text-lg text-navy">{percentase}</p>
 			</div>
 
 			<p className="text-base font-medium text-gray-400 mt-5 xl:mt-4">

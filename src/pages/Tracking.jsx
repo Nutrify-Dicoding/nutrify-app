@@ -39,7 +39,7 @@ function Tracking() {
 	}, [token, navigate, dispatch]);
 	return (
 		<section className="px-[6.25%] w-full tab:h-full tab:pt-[4rem] mt-[7.5rem] tab:mt-14 ">
-			<div className="text-2xl font-semibold text-navy flex justify-between items-center">
+			<div className="text-2xl sm:text-mobile-2xl font-semibold text-navy flex justify-between items-center">
 				<p>Pilih Makanan</p>
 				<Link to="/alltrack">
 					<p className="text-base opacity-90 text-orange font-medium">All Tracking</p>
@@ -92,7 +92,7 @@ function Tracking() {
 					text="Capaian"
 				/>
 			</div>
-			<p className="text-navy font-semibold mt-8 text-2xl">Makanan dipilih hari ini</p>
+			<p className="text-navy font-semibold mt-8 text-2xl sm:text-mobile-2xl">Makanan dipilih hari ini</p>
 			<div className={`text-center text-darknavy mt-7 mb-10 ${foodsSelectedToday.length ? 'hidden' : 'block'}`}>
 				<p className="text-md font-semibold">Tidak ada makanan yang dipilih hari ini!</p>
 			</div>
