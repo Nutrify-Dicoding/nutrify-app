@@ -15,7 +15,7 @@ function CardFood({ id, name, description, fat, calorie, protein, carbohydrate, 
 					<div className="pt-5 pb-4 px-[14px] sm:px-[10px] ">
 						<h3 className="text-xl sm:text-base font-semibold text-navy">{name}</h3>
 						<div className="flex flex-col h-full justify-between">
-							<p className="text sm:text-sm text-navy opacity-80">
+							<p className="text-sm sm:text-xs text-navy opacity-80">
 								{description.length > 45 ? `${description.slice(0, 45)}...` : description}
 							</p>
 						</div>

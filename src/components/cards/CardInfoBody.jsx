@@ -18,12 +18,10 @@ const colourValue = (title, bodyValue, bodyText) => {
 	}
 };
 
-function CardInfoBody({
-		icon, title, bodyText, bodyValue, advice,
-	}) {
+function CardInfoBody({ icon, title, bodyText, bodyValue, advice }) {
 	return (
 		<div className="w-full p-5 border-[1px] flex justify-between gap-2 rounded-2xl">
-			<div className="w-[80%]">
+			<div className="w-[80%] sm:w-full">
 				<div className="flex mb-4">
 					<img src={`/icons/${icon}`} alt={`Icon ${title}`} />
 					<h3 className="ml-3 text-xl sm:text-mobile-xl font-semibold text-navy">{title}</h3>
@@ -35,10 +33,12 @@ function CardInfoBody({
 					<p className="text-white-500">
 						<span
 							dangerouslySetInnerHTML={{
-								__html: advice.replace(bodyText, `<span class="${colourValue(title, bodyValue, bodyText)} font-semibold">${bodyText}</span>`),
+								__html: advice.replace(
+									bodyText,
+									`<span class="${colourValue(title, bodyValue, bodyText)} font-semibold">${bodyText}</span>`,
+								),
 							}}
-						/>
-						{' '}
+						/>{' '}
 						Kunjungi halaman
 						<span className="text-navy font-semibold">
 							<Link to="/advice"> berikut.</Link>
@@ -46,8 +46,8 @@ function CardInfoBody({
 					</p>
 				</div>
 			</div>
-			<div className="w-20 h-full grid place-content-center">
-				<div className="w-20 h-20 grid place-content-center bg-white-100 rounded-full sm:hidden">
+			<div className="w-20 h-full grid place-content-center sm:hidden">
+				<div className="w-20 h-20 grid place-content-center bg-white-100 rounded-full">
 					<p className={`${colourValue(title, bodyValue, bodyText)} text-4xl sm:text-mobile-4xl font-semibold`}>{bodyValue}</p>
 				</div>
 			</div>
