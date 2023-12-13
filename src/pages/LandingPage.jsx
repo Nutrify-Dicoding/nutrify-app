@@ -82,7 +82,7 @@ function LandingPage() {
 			</section>
 			<section className="px-[6.25%] py-[5rem] sm:py-12">
 				<div className="text-navy mb-12 sm:mb-8">
-					<h2 className="text-4xl font-bold sm:text-mobile-4xl">
+					<h2 className="text-4xl font-bold tab:text-mobile-4xl">
 						Fitur <span className="text-orange">Unggulan</span> Kami
 					</h2>
 					<p className="opacity-90 sm:leading-7">Temukan keunggulan kami dalam memfasilitasi perjalanan kesehatan Anda</p>
@@ -149,7 +149,7 @@ function LandingPage() {
 			<section className="px-[6.25%]">
 				<div className="p-12 shadow-[0px_0px_56px_-7px_rgba(119,119,119,0.12)] lg:px-8 sm:px-4">
 					<div className="text-navy mb-12 sm:mb-8 text-center">
-						<h2 className="text-4xl font-bold sm:text-mobile-4xl">
+						<h2 className="text-4xl font-bold tab:text-mobile-4xl">
 							Pencapaian <span className="text-orange">Nutrisi Seimbang</span>
 						</h2>
 						<p className="opacity-90 sm:leading-7">Temukan keberagaman nutrisi yang akan kami kalkulasi untuk Anda</p>
@@ -180,12 +180,12 @@ function LandingPage() {
 			</section>
 			<section className="px-[6.25%] py-[5rem] sm:py-12">
 				<div className="text-navy mb-12 sm:mb-8">
-					<h2 className="text-4xl font-bold sm:text-mobile-4xl">
+					<h2 className="text-4xl font-bold tab:text-mobile-4xl">
 						Eksplorasi <span className="text-orange">Ragam Makanan</span> Sehat
 					</h2>
 					<p className="opacity-90 sm:leading-7">Temukan kelezatan nutrisi dalam setiap hidangan kami.</p>
 				</div>
-				<div className="grid my-10 sm:grid-cols-1 tab:grid-cols-3 md:grid-cols-2 grid-cols-4 gap-5">
+				<div className="grid my-10 tab:grid-cols-3 md:grid-cols-2 grid-cols-4 gap-5">
 					{foods.slice(0, 4).map((item, index) => (
 						<CardFood
 							key={index}
@@ -212,7 +212,7 @@ function LandingPage() {
 			<section className="px-[6.25%] pb-[5rem]">
 				<div className="h-[380px] flex flex-col justify-center items-center bg-[url('/images/landing-page/banner-promo.png')] bg-no-repeat bg-center bg-cover text-center text-white rounded-[1.25rem] tab:h-[280px] sm:h-[300px] sm:bg-right">
 					<div className="w-[58%] mb-7 tab:w-[90%]">
-						<h2 className="text-4xl font-semibold mb-2 sm:text-mobile-4xl">Ayo Daftar Sekarang Juga!</h2>
+						<h2 className="text-4xl font-semibold mb-2 tab:text-mobile-4xl">Ayo Daftar Sekarang Juga!</h2>
 						<p className="text-md sm:text-base">Jangan Lewatkan Kesempatan Untuk Meningkatkan Kesehatan dan Gaya Hidup Anda.</p>
 					</div>
 					<Link to="/signup">
