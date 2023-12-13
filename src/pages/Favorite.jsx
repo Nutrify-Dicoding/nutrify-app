@@ -33,7 +33,7 @@ function Favorite() {
 	return (
 		<section className="pt-24 px-[6.25%] text-navy mb-20 sm:mb-12">
 			<Breadcrumb items={breadcrumbItems} />
-			<h1 className="font-semibold pb-2 text-xl">Makanan Favorit Pilihanmu</h1>
+			<h1 className="font-semibold pb-2 text-2xl sm:text-mobile-2xl">Makanan Favorit Pilihanmu</h1>
 			<div className="w-full grid grid-cols-4 gap-5 mt-3 tab:grid-cols-3 md:grid-cols-2" id="list-food">
 				{favorite.map((item, index) => (
 					<CardFood
