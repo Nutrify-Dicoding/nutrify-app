@@ -25,6 +25,7 @@ module.exports = {
 		'jsx-a11y/no-noninteractive-element-interactions': 'off',
 		'no-mixed-operators': 'off',
 		radix: 'off',
+		'linebreak-style': ['error', 'windows'],
 		// "no-console": "off",
 	},
 };

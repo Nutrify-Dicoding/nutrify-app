@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
