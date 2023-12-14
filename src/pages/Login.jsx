@@ -12,8 +12,8 @@ function Login() {
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
-		email: 'xyz@gmail.com',
-		password: 'xyz@gmail.com',
+		email: '',
+		password: '',
 	});
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -95,9 +95,9 @@ function Login() {
 						{' '}
 						atau
 						{' '}
-						<a href="mailto:fauziridho38@gmail.com" className="text-[#FB8500] font-bold">
+						<Link to="/reset-password" className="text-[#FB8500] font-bold">
 							Lupa Password
-						</a>
+						</Link>
 					</p>
 				</div>
 			</div>

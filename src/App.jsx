@@ -16,6 +16,7 @@ import NotFound from './pages/NotFound';
 import SignUp from './pages/SignUp';
 import Favorite from './pages/Favorite';
 import 'react-toastify/dist/ReactToastify.css';
+import ForgetPassword from './pages/ForgetPassword';
 
 function App() {
 	const auth = useSelector((state) => state.auth);
@@ -109,6 +110,12 @@ function App() {
 						<Layout>
 							<Favorite />
 						</Layout>
+					}
+				/>
+				<Route
+					path="/reset-password"
+					element={
+							<ForgetPassword />
 					}
 				/>
 				<Route
